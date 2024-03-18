@@ -4,13 +4,21 @@
   
   
   <entry>
-    <title></title>
+    <title>神奇的SteamTools教程</title>
     <link href="/2024/03/06/hello-world/"/>
     <url>/2024/03/06/hello-world/</url>
     
     <content type="html"><![CDATA[<hr><h1 id="神奇的SteamTools教程"><a href="#神奇的SteamTools教程" class="headerlink" title="神奇的SteamTools教程"></a>神奇的SteamTools教程</h1><h6 id="来自深度睡眠"><a href="#来自深度睡眠" class="headerlink" title="来自深度睡眠"></a>来自<span style="color:purple">深度睡眠</span></h6><h4 id="这是教程-steamtools官网-点击即可"><a href="#这是教程-steamtools官网-点击即可" class="headerlink" title="这是教程 steamtools官网(点击即可)"></a>这是教程 <a href="https://www.steamtools.net/">steamtools官网</a>(点击即可)</h4><p>(嫌字多是吧，行，我帮你划重点，1,1.2,2,7,8十分有必要看的，当然这里基本上写了所有你可能会遇到的问题的答案，如果你有耐心请将它看完，谢谢你)<br>基础篇<br>1.怎么解锁游戏：点开steam库，用你的鼠标，按住他(steam库中的游戏图标)，然后将它拖进tools的悬浮窗里，就可以解锁(一般解锁了会冒出个提示)</p><p>1.2:怎么取消解锁 按住ctrl然后把游戏拖到tools悬浮窗里(一般取消解锁了也会冒出个提示)，然后重启steam<br>如果没效果删除X:\steam\config\stplug-in下的除luapacka.exe Steamtools.lua Steamtools.st以外的所有文件<br>(当然如果你了解appid[在下文]那么你应该可以针对性的删除，但是没看明白或者懒可以这么干 ↑ )</p><p>1.5:解锁&#x2F;下载不了怎么办  (把tools里的 禁止游戏更新 关了！！！)<br>解锁不了：删除X:\steam\config\stplug-in和X:\steam\config\stUI目录下的所有文件，然后重新安装steamtools<br>(最简单的：重装steam后重装steamtools)<br>下载不了：<u>看看”解锁steam方案”中的”禁止游戏更新”是否打开了，如果打开请关掉它</u><br>(还有可能是因为有第三方平台验证 例：育碧，r星，EA 或D加密[商店页面写”第三方 DRM: Denuvo Anti-tamper”]这种建议直接找绿色学习版)</p><p>2.怎么解锁dlc：别惦记你那破一键解锁dlc了，大清早亡了……用你的鼠标，和 1.怎么解锁游戏 同理，把dlc图标拖到tools悬浮窗上</p><p>2.5:为什么我的dlc解锁了没有，或是“此内容处于加密状态”“清单不可用”“网络不可用”(排除网络和清单问题，你可以尝试清楚下载缓存)<br>答：因为dlc需要下载，可以找个拥有游戏和dlc的账户(参考游戏共享论坛.txt)或入库工具(你应该知道是什么)<br>注：现在steamtools新增了拖拽清单和lua至tools悬浮窗后将清单拷贝到对应位置和自动编写插件(XXX.st)<br>[不需要理解其中含义，你只需要知道将别人发你的XXX.lua和XXX.manifest拖拽到steamtools悬浮窗上即可]</p><p>2.8:游戏更新了怎么办<br>答：<del>购买正版</del>你可以登录共享号进行更新，或是使用别人发给你的对应版本更新的manifest(清单文件)和lua(插件)拖拽到steamtools悬浮窗上即可<br>或是等待入库工具更新对应清单后重新入库(有钱的直接买，更新完退款就行，当然不能保证每次都会把钱退回来，保险起见可以在小号购买并更新，退款也快一些)<br>(需要删除之前的lua编写的st[插件]，详见 1.5 因为steamtools现在固定了接口，所以每个插件[st]都会指向一个清单)————————看这里！！！！<br>注：更新不了的请自行去X:\steam\config\stplug-in查看插件(.st)删除对应appid的插件(.st)<br>       如果不能理解请参考 1.2 怎么取消解锁，那个操作起来简单一些</p><p>3.如果是d加密游戏怎么办(已失效，等待tools官方恢复授权功能)<br>答：找到一个拥有游戏的账户，然后启动游戏，如果你成功进游戏了，可以玩，那么你就可以退出游戏了，<br>然后回到你自己的账户(记得把游戏解锁)，然后点击tools的“当前steam账户”中的“授权游戏”接着找到游戏对应的appid确认授权</p><p>4.怎么知道游戏对应的appid？<br>答：steam商店上面的网址app&#x2F;xxxxx那段数字就是，或必应搜索steamdb，然后点进去搜索你要玩的游戏就可以查到<br>例：The Long Drive <a href="https://store.steampowered.com/app/1017180(%E4%B9%9F%E5%8F%AF%E8%83%BD%E6%98%AFhttps://store.steampowered.com/app/1017180?snr=5000_5100___primarylinks)">https://store.steampowered.com/app/1017180(也可能是https://store.steampowered.com/app/1017180?snr=5000_5100___primarylinks)</a><br>App ID 1017180</p><p>5.如果游戏删了还能重新下回来吗，游戏能自动更新吗<br>删了能下回来吗：游戏没有更新并且本地有清单和插件[st]能下回来，更新了自求多福(小贴士：共享号)<br>(可以去共享号下载，或者使用入库工具，当然别人发给你的清单文件也是可以使用的，详见 2.5 )</p><p>6.可以用云存档吗？<br>如果不能用云存档那为什么不玩盗版(能)</p><p>7.能玩联机游戏吗？(为什么不问问神奇的联机补丁呢)<br>大部分不行，像是什么育碧，r星，EA的都不行(像是什么地平线4&#x2F;5，幻兽帕鲁这种可以入库直接联机，其余的不知道，自己去试)</p><p>8.我不能解锁怎么办&#x2F;下载<br>去steam设置把测试版退回去！！！把微星小飞机关了！！！把tools禁止游戏更新关了！！！——————————————看这里！！！！</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>SteamTools</tag>
+      
+      <tag>教程</tag>
+      
+    </tags>
     
   </entry>
   
