@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>一篇没用的文章</title>
+      <link href="/2024/04/20/%E4%B8%80%E7%AF%87%E6%B2%A1%E7%94%A8%E7%9A%84%E6%96%87%E7%AB%A0/"/>
+      <url>/2024/04/20/%E4%B8%80%E7%AF%87%E6%B2%A1%E7%94%A8%E7%9A%84%E6%96%87%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一篇没用的文章"><a href="#一篇没用的文章" class="headerlink" title="一篇没用的文章"></a>一篇没用的文章</h1><h4 id="hexo安装教程"><a href="#hexo安装教程" class="headerlink" title="(hexo安装教程)"></a>(hexo安装教程)</h4><h6 id="来自深度睡眠-部分图片来源于网络"><a href="#来自深度睡眠-部分图片来源于网络" class="headerlink" title="来自深度睡眠(部分图片来源于网络)"></a>来自<span style="color:gray">深度睡眠</span>(部分图片来源于网络)</h6><p>关于怎么在github page搭建hexo博客  </p><p>首先进入<a href="https://github.com/">github </a>(点击即可)<br>然后登录(没有的自己注册一个)</p><ul><li>github page配置篇</li></ul><h6 id="推荐使用fastgithub改善网络环境"><a href="#推荐使用fastgithub改善网络环境" class="headerlink" title="推荐使用fastgithub改善网络环境"></a>推荐使用fastgithub改善网络环境</h6><p> 链接直达(点击即可)<br> <a href="https://github.com/WangGithubUser/FastGithub/releases">github发布页</a><br> <a href="https://gitee.com/chcrazy/FastGithub/releases">gitee发布页</a> (内网环境建议使用gitee发布页下载)</p><p>接下来建一个新项目<br> <img src="https://img.picui.cn/free/2024/09/17/66e981c934f59.png" alt="image_79.png"><br>推荐设置就像这样(比较无脑)<br>注：dhzyfun.github.io仅供参考，实际还是需要按照你的github用户名来填写<br>项目名字格式是 用户名+github.io，这么填写项目名github会送你一个二级域名，不用为域名的事情发愁(私库发布github pages需要付费，我的建议是公开项目，当然有钱随意，还有开源协议挑个自己顺眼的就行)<br> <img src="https://img.picui.cn/free/2024/09/17/66e981c933786.png" alt="image_80.png"></p><p>然后你就得到了一个github pages</p><ul><li>安装hexo</li></ul><p>首先安装一个node.js</p><p>这是两个下载站，<a href="https://nodejs.cn/download/">node.js中文站</a>和<a href="https://nodejs.org/en">node.js官网下载站</a>，至于选哪个按需求来  </p><p>然后安装一个git<br>(不会用命令部署的可以用<a href="https://desktop.github.com/">github desktop</a>，但我的建议是用<a href="https://git-scm.com/downloads">git</a>)  </p><p>接着找个风水宝地建个文件夹(或者直接在磁盘根目录)，用cmd进入这个文件夹<br>(我的建议是直接在文件夹地址输入cmd，不会就慢慢cd吧)<br>然后输入命令<code>npm install -g hexo-cli</code>全局安装hexo<br>接下来输入命令<code>hexo init your_blog</code>获取到hexo博客文件<br>(your_blog可以换成别的名字，但最好是英文的，进度条可能会很慢，如果卡死建议尝试使用fastgithub改善网络环境)<br>如果安装成功your_blog(或者你输入的文件夹名字)里会多出一堆莫名其妙的玩意，这些就是hexo的文件了<br>找到并打开 _config.yml 向下拉，找到  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:  </span><br><span class="line">  type: git  </span><br><span class="line">  repo: https://github.com/githubname/name.github.io.git  </span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure><p>将repo改成你的name.github.io<br>例如dhzyfun就是<a href="https://github.com/hzyfun/hzyfun.github.io.git">https://github.com/hzyfun/hzyfun.github.io.git</a></p><ul><li>部署hexo到github pages</li></ul><p>在更改_config.yml完成后，输入命令<code>npm install hexo-deployer-git --save</code>  </p><p>然后输入<code>hexo clean</code>和<code>hexo deploy</code>  </p><p>最后访问你的github.io.git就能看到hello world了(乐<br> <img src="https://img.picui.cn/free/2024/09/17/66e981c933fa3.png" alt="landscape.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>神奇的SteamTools教程</title>
+      <link href="/2024/03/06/Steamtools/"/>
+      <url>/2024/03/06/Steamtools/</url>
+      
+        <content type="html"><![CDATA[<hr><h1 id="神奇的SteamTools教程"><a href="#神奇的SteamTools教程" class="headerlink" title="神奇的SteamTools教程"></a>神奇的SteamTools教程</h1><h6 id="来自深度睡眠"><a href="#来自深度睡眠" class="headerlink" title="来自深度睡眠"></a>来自<span style="color:purple">深度睡眠</span></h6><h4 id="这是教程-steamtools官网-点击即可"><a href="#这是教程-steamtools官网-点击即可" class="headerlink" title="这是教程 steamtools官网(点击即可)"></a>这是教程 <a href="https://www.steamtools.net/">steamtools官网</a>(点击即可)</h4><p>(嫌字多是吧，行，我帮你划重点，1,1.2,2,7,8十分有必要看的，当然这里基本上写了所有你可能会遇到的问题的答案，如果你有耐心请将它看完，谢谢你)<br>基础篇<br>1.怎么解锁游戏：点开steam库，用你的鼠标，按住他(steam库中的游戏图标)，然后将它拖进tools的悬浮窗里，就可以解锁(一般解锁了会冒出个提示)</p><p>1.2:怎么取消解锁 按住ctrl然后把游戏拖到tools悬浮窗里(一般取消解锁了也会冒出个提示)，然后重启steam<br>如果没效果删除X:\steam\config\stplug-in下的除luapacka.exe Steamtools.lua Steamtools.st以外的所有文件<br>(当然如果你了解appid[在下文]那么你应该可以针对性的删除，但是没看明白或者懒可以这么干 ↑ )</p><p>1.5:解锁&#x2F;下载不了怎么办  (把tools里的 禁止游戏更新 关了！！！)<br>解锁不了：删除X:\steam\config\stplug-in和X:\steam\config\stUI目录下的所有文件，然后重新安装steamtools<br>(最简单的：重装steam后重装steamtools)<br>下载不了：<u>看看”解锁steam方案”中的”禁止游戏更新”是否打开了，如果打开请关掉它</u><br>(还有可能是因为有第三方平台验证 例：育碧，r星，EA 或D加密[商店页面写”第三方 DRM: Denuvo Anti-tamper”]这种建议直接找绿色学习版)</p><p>2.怎么解锁dlc：别惦记你那破一键解锁dlc了，大清早亡了……用你的鼠标，和 1.怎么解锁游戏 同理，把dlc图标拖到tools悬浮窗上</p><p>2.5:为什么我的dlc解锁了没有，或是“此内容处于加密状态”“清单不可用”“网络不可用”(排除网络和清单问题，你可以尝试清楚下载缓存)<br>答：因为dlc需要下载，可以找个拥有游戏和dlc的账户(参考游戏共享论坛.txt)或入库工具(你应该知道是什么)<br>注：现在steamtools新增了拖拽清单和lua至tools悬浮窗后将清单拷贝到对应位置和自动编写插件(XXX.st)<br>[不需要理解其中含义，你只需要知道将别人发你的XXX.lua和XXX.manifest拖拽到steamtools悬浮窗上即可]</p><p>2.8:游戏更新了怎么办<br>答：<del>购买正版</del>你可以登录共享号进行更新，或是使用别人发给你的对应版本更新的manifest(清单文件)和lua(插件)拖拽到steamtools悬浮窗上即可<br>或是等待入库工具更新对应清单后重新入库(有钱的直接买，更新完退款就行，当然不能保证每次都会把钱退回来，保险起见可以在小号购买并更新，退款也快一些)<br>(需要删除之前的lua编写的st[插件]，详见 1.5 因为steamtools现在固定了接口，所以每个插件[st]都会指向一个清单)————————看这里！！！！<br>注：更新不了的请自行去X:\steam\config\stplug-in查看插件(.st)删除对应appid的插件(.st)<br>       如果不能理解请参考 1.2 怎么取消解锁，那个操作起来简单一些</p><p>3.如果是d加密游戏怎么办(已失效，等待tools官方恢复授权功能)<br>答：找到一个拥有游戏的账户，然后启动游戏，如果你成功进游戏了，可以玩，那么你就可以退出游戏了，<br>然后回到你自己的账户(记得把游戏解锁)，然后点击tools的“当前steam账户”中的“授权游戏”接着找到游戏对应的appid确认授权</p><p>4.怎么知道游戏对应的appid？<br>答：steam商店上面的网址app&#x2F;xxxxx那段数字就是，或必应搜索steamdb，然后点进去搜索你要玩的游戏就可以查到<br>例：The Long Drive <a href="https://store.steampowered.com/app/1017180(%E4%B9%9F%E5%8F%AF%E8%83%BD%E6%98%AFhttps://store.steampowered.com/app/1017180?snr=5000_5100___primarylinks)">https://store.steampowered.com/app/1017180(也可能是https://store.steampowered.com/app/1017180?snr=5000_5100___primarylinks)</a><br>App ID 1017180</p><p>5.如果游戏删了还能重新下回来吗，游戏能自动更新吗<br>删了能下回来吗：游戏没有更新并且本地有清单和插件[st]能下回来，更新了自求多福(小贴士：共享号)<br>(可以去共享号下载，或者使用入库工具，当然别人发给你的清单文件也是可以使用的，详见 2.5 )</p><p>6.可以用云存档吗？<br>如果不能用云存档那为什么不玩盗版(能)</p><p>7.能玩联机游戏吗？(为什么不问问神奇的联机补丁呢)<br>大部分不行，像是什么育碧，r星，EA的都不行(像是什么地平线4&#x2F;5，幻兽帕鲁这种可以入库直接联机，其余的不知道，自己去试)</p><p>8.我不能解锁怎么办&#x2F;下载<br>去steam设置把测试版退回去！！！把微星小飞机关了！！！把tools禁止游戏更新关了！！！——————————————看这里！！！！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> SteamTools </tag>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
