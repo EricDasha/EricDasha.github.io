@@ -4,6 +4,67 @@
   
     
     <entry>
+      <title>powershell安装appx</title>
+      <link href="/2024/10/11/powershell%E5%AE%89%E8%A3%85appx/"/>
+      <url>/2024/10/11/powershell%E5%AE%89%E8%A3%85appx/</url>
+      
+        <content type="html"><![CDATA[<h1 id="powersshell-安装appx"><a href="#powersshell-安装appx" class="headerlink" title="powersshell 安装appx"></a>powersshell 安装appx</h1><h4 id="重要物品"><a href="#重要物品" class="headerlink" title="重要物品"></a>重要物品</h4><ul><li><a href="https://store.rg-adguard.net/">store.rg-adguard.net</a> (appx下载站)</li><li><a href="https://apps.microsoft.com/apps">apps.microsoft.com&#x2F;apps</a> (microsoft store app web)</li><li><del>ctrl，c，v三个键</del></li></ul><p>首先，我们来到<a href="https://store.rg-adguard.net/">appx下载站</a><br><img src="https://img.picui.cn/free/2024/10/11/670944c14b304.png" alt="image_614.png"></p><p>在<a href="https://apps.microsoft.com/apps">微软商店web</a>找到你想装的uwp软件<br>(别问我为什么是uwp，因为别的软件你完全可以去对应官网下载)<br><img src="https://img.picui.cn/free/2024/10/11/670945f5d3f08.png" alt="image_615.png"><br>例如我们想下载HEVC视频拓展<br>ps:很多人都是为了这玩意，不过为什么不用第三方播放器呢……？<br>随后我们来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入HEVC视频拓展的链接(其实还有别的查找，但我们要求稳~~)<br><a href="https://wwyp.lanzoul.com/iDU7g2cbrnab"><img src="https://img.picui.cn/free/2024/10/11/6709465c89339.png" alt="image_617.png"></a><br>点击appx(有的可能是msixbundle，二选一即可，当然要我说，appx足矣，还有上面的这张图片是可以点的，我把HEVC视频拓展的appx下载完扔蓝奏云了，如果你是为了这玩意点进去下载就可以了↑) </p><p>快说，谢谢分割线先生:D</p><hr><p>接下来我们要学会一个操作<br>按住shift右键文件，你就能复制文件地址<br><img src="https://img.picui.cn/free/2024/10/11/670948cc3f704.png" alt="image_618.png"><br>接下来按win+r 输入powershell <del>(营销号)</del><br><img src="https://img.picui.cn/free/2024/10/11/6709494fa2697.png" alt="image_620.png"><br>别问为什么你那没有”使用管理权限创建此任务”，你没有关闭”以管理员批准模式运行所有管理员”，至于怎么关闭……<br><a href="https://blog.csdn.net/Leloz/article/details/128474551">链接直达</a>(👈戳它，谢谢)<br>来到powershell<br>输入Add-AppxPackage -Path “appx文件的路径”<br>就像这样<img src="https://img.picui.cn/free/2024/10/11/67094aae9f9d3.png" alt="image_624.png"><br>然后回车，你就会看到进度条溜过<img src="https://img.picui.cn/free/2024/10/11/67094b13dd0a7.png" alt="image_625.png"><br><del>好了，本篇文章结束</del><br>当然没有，很显然HEVC视频拓展不需要额外的依赖<br>(应该是这么叫…？)<br>老坛酸菜(ltsc)等系统版本不内置微软商店<br>需要额外来部署微软商店，而网上流传很广的方法是靠命令部署，但我很神奇的成功不了，所以……Add-AppxPackage启动！<br>(小贴士：微软商店的链接  <a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">https://apps.microsoft.com/detail/9wzdncrfjbmp</a>)<br>然后来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入<a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">微软商店的链接</a><br>你就会看到令人窒息的场景<br><img src="https://img.picui.cn/free/2024/10/12/67094c869f38c.png" alt="image_627.png"><br>没错，一堆乱七八糟的玩意，接下来下载所需的依赖和软件本体安装包<br>如果你仔细观看了这些玩意的名字你就会发现其实也就这点依赖</p><ul><li>Microsoft.NET.Native.Framework</li><li>Microsoft.UI.Xaml</li><li>Microsoft.VCLibs</li></ul><p>Microsoft.UI.Xaml有两个版本，2.4与2.8，选个顺眼的即可(选2.8)<br><img src="https://img.picui.cn/free/2024/10/12/67094e1ba77ef.png" alt="image_629.png"><br>然后选择系统对应的版本(不懂无脑x64，如果你系统不是x64那就自己选)<br>接着Add-AppxPackage -Path “appx文件的路径”<br>如果你认真看了上面的内容那肯定是会的(不会自己翻回去看:P)</p><p>当然不同的软件需要的依赖可能不同，但方法都大差不差的</p><p>还有件事，win10和win11专业版应该是自带一个”应用安装程序”<br>你点一下安装会自动安装依赖(很慢很慢，且十分不好用，不如Add-AppxPackage -Path还需要系统更新服务……)<br>ps:我系统更新就没正常过……</p><p>好了这篇就这样吧，祝你平安快乐，拜~</p><p><a href="https://img.picui.cn/free/2024/10/12/670950dc255f1.png"><img src="https://img.picui.cn/free/2024/10/12/670950dc255f1.png" alt="beeb7f5391c0fc58e802a09da4f3fdca.png"></a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 系统 </tag>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>赛博超能力</title>
+      <link href="/2024/10/11/%E8%B5%9B%E5%8D%9A%E8%B6%85%E8%83%BD%E5%8A%9B/"/>
+      <url>/2024/10/11/%E8%B5%9B%E5%8D%9A%E8%B6%85%E8%83%BD%E5%8A%9B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="每周一次的赛博超能力来了"><a href="#每周一次的赛博超能力来了" class="headerlink" title="每周一次的赛博超能力来了"></a>每周一次的赛博超能力来了</h1><h3 id="附-请截图食用"><a href="#附-请截图食用" class="headerlink" title="(附:请截图食用)"></a><span style="color:#e73737">(附:请截图食用)</span></h3><p><img src="https://www.helloimg.com/i/2024/10/11/67093ad6278c9.gif" alt="1.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae21c577.gif" alt="2.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae2153fc.gif" alt="3.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae215de2.gif" alt="4.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae21dfc4.gif" alt="5.gif"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 好玩 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《意大利面拌42号混凝土》</title>
+      <link href="/2024/10/05/%E6%88%91%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%84%8F%E5%A4%A7%E5%88%A9%E9%9D%A2%E5%B0%B1%E5%BA%94%E8%AF%A5%E6%8B%8C42%E5%8F%B7%E6%B7%B7%E5%87%9D%E5%9C%9F/"/>
+      <url>/2024/10/05/%E6%88%91%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%84%8F%E5%A4%A7%E5%88%A9%E9%9D%A2%E5%B0%B1%E5%BA%94%E8%AF%A5%E6%8B%8C42%E5%8F%B7%E6%B7%B7%E5%87%9D%E5%9C%9F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="原视频"><a href="#原视频" class="headerlink" title="原视频"></a>原视频</h2><div class="video-container"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=218871639&bvid=BV1o8411x7aE&cid=855664393&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div><h2 id="红红火火恍恍惚惚"><a href="#红红火火恍恍惚惚" class="headerlink" title="红红火火恍恍惚惚"></a>红红火火恍恍惚惚</h2><div class="video-container"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112847078035222&bvid=BV1fneYeTEXi&cid=500001627124956&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div><h3 id="原作者频道：https-www-bilibili-com-video-BV1o8411x7aE"><a href="#原作者频道：https-www-bilibili-com-video-BV1o8411x7aE" class="headerlink" title="原作者频道：https://www.bilibili.com/video/BV1o8411x7aE"></a>原作者频道：<a href="https://www.bilibili.com/video/BV1o8411x7aE">https://www.bilibili.com/video/BV1o8411x7aE</a></h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 意大利面 </tag>
+            
+            <tag> 42号混凝土 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>部分游戏的伪局域网联机</title>
       <link href="/2024/09/20/%E9%83%A8%E5%88%86%E6%B8%B8%E6%88%8F%E7%9A%84%E4%BC%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/"/>
       <url>/2024/09/20/%E9%83%A8%E5%88%86%E6%B8%B8%E6%88%8F%E7%9A%84%E4%BC%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/</url>
@@ -20,9 +81,9 @@
       
         <tags>
             
-            <tag> 游戏 </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> 游戏 </tag>
             
             <tag> 联机 </tag>
             
