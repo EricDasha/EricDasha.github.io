@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>🚀使用PowerShell安装微软商店，计算器等</title>
+      <link href="/_post/powershell%E5%AE%89%E8%A3%85appx/"/>
+      <url>/_post/powershell%E5%AE%89%E8%A3%85appx/</url>
+      
+        <content type="html"><![CDATA[<h3 id="🚀-使用-PowerShell-轻松安装-APPX-MSIXBUNDLE-文件"><a href="#🚀-使用-PowerShell-轻松安装-APPX-MSIXBUNDLE-文件" class="headerlink" title="🚀 使用 PowerShell 轻松安装 APPX&#x2F;MSIXBUNDLE 文件"></a>🚀 使用 PowerShell 轻松安装 APPX&#x2F;MSIXBUNDLE 文件</h3><p>本教程将引导您如何使用 PowerShell 手动安装 Windows 应用（<code>.appx</code> 或 <code>.msixbundle</code> 格式）。这对于没有预装 Microsoft Store 的系统（如 LTSC 版本）或需要离线安装的场景十分甚至九分有用 (homo特有的十比九大)</p><h4 id="核心工具"><a href="#核心工具" class="headerlink" title="核心工具"></a>核心工具</h4><ul><li><strong>Microsoft Store 网站</strong>: <code>https://apps.microsoft.com/apps</code>  - 用于查找应用并获取链接</li><li><strong>APPX 链接生成器</strong>: <code>https://store.rg-adguard.net</code> - 用于从下载微appx,msix…等安装包</li></ul><hr><h4 id="第一步：获取应用安装包-📦"><a href="#第一步：获取应用安装包-📦" class="headerlink" title="第一步：获取应用安装包 📦"></a>第一步：获取应用安装包 📦</h4><ol><li><p><strong>查找应用</strong>: 访问 <a href="https://apps.microsoft.com/apps">Microsoft Store 网站</a>，搜索您需要安装的应用，例如 “HEVC 视频扩展”<br><img src="https://s2.loli.net/2025/09/14/GfyKLBDoQwcEjIe.png" alt="image_1671.png"></p></li><li><p><strong>复制链接</strong>: 进入应用页面后，从浏览器地址栏复制完整的 URL。<br><img src="https://s2.loli.net/2025/09/14/NMlKF4xoHnVktX2.png" alt="image_1672.png"></p></li><li><p><strong>生成下载链接</strong>: 打开 <a href="https://store.rg-adguard.net/">store.rg-adguard.net</a>，将刚才复制的 URL 粘贴到输入框中，然后点击右侧的“✔️”按钮。<br><img src="https://s2.loli.net/2025/09/14/CAoI7yZcJ6LPGzS.png" alt="image_1674.png"></p></li><li><p><strong>下载文件</strong>: 页面将列出所有相关文件。您需要下载：<br><img src="https://s2.loli.net/2025/09/14/RelS7BmcvgGKXH5.png" alt="image_1675.png"></p><ul><li><strong>主程序包</strong>: 文件后缀为 <code>.appx</code> 或 <code>.msixbundle</code> 的是应用本体。</li><li><strong>所有依赖项</strong>: 其他以 <code>.appx</code> 结尾的文件是必需的依赖库。<br>对于复杂的应用（如 Microsoft Store 本身），您会看到多个依赖项。请确保下载与您的系统架构（通常是 <strong>x64</strong>）匹配的版本。</li></ul><p>常见的依赖项包括：</p><ul><li><code>Microsoft.VCLibs</code></li><li><code>Microsoft.UI.Xaml</code></li><li><code>Microsoft.NET.Native.Framework</code></li></ul></li></ol><hr><h4 id="第二步：使用-PowerShell-进行安装"><a href="#第二步：使用-PowerShell-进行安装" class="headerlink" title="第二步：使用 PowerShell 进行安装"></a>第二步：使用 PowerShell 进行安装</h4><ol><li><p><strong>以管理员身份运行 PowerShell</strong>:<br>按win+x，然后选择选择 <strong>Windows PowerShell (管理员)</strong><br>(或是营销号常见操作：我们按住win+r，然后输入powershell)<br>🦐：🌿<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g4a9c50efa4440a1fa89d0bed09bf043a.png" alt="image_624.png"></p></li><li><p><strong>复制文件路径</strong>:<br><img src="https://s2.loli.net/2025/09/14/lCU3sfaDtWdoj5K.png" alt="image_1676.png"><br>   按住 <code>Shift</code> 键，同时右键点击其中一个文件，便可以选择<strong>复制为路径</strong></p></li><li><p><strong>执行安装命令</strong>:<br>在 PowerShell 窗口中，输入以下命令并回车。请将引号中的路径替换为您刚刚复制的实际文件路径。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Add-AppxPackage</span> <span class="literal">-Path</span> <span class="string">&quot;您复制的文件路径&quot;</span></span><br></pre></td></tr></table></figure><p><strong>例如:</strong></p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Add-AppxPackage</span> <span class="literal">-Path</span> <span class="string">&quot;C:\Downloads\Microsoft.HEVCVideoExtension_8wekyb3d8bbwe.Appx&quot;</span></span><br></pre></td></tr></table></figure></li><li><p><strong>安装依赖项</strong>:<br><strong>重要规则：</strong> 必须先安装所有依赖项，最后再安装主程序包。请对每一个依赖文件重复步骤 <strong>2</strong> 和 <strong>3</strong>，安装完成后，再用同样的方法安装主程序包</p><p>安装过程会显示进度条，完成后即可在开始菜单中找到该应用</p></li></ol><hr><h4 id="补充：关于“应用安装程序”"><a href="#补充：关于“应用安装程序”" class="headerlink" title="补充：关于“应用安装程序”"></a>补充：关于“应用安装程序”</h4><p>部分 Windows 版本（如专业版）内置了“应用安装程序”，允许用户通过双击 <code>.appx</code> 或 <code>.msixbundle</code> 文件来安装应用。它会自动处理依赖关系（例如把上面的blabla全自动装好）<br><img src="https://s2.loli.net/2025/09/14/wHWmnesDN5LGOUb.png" alt="image_1678.png"><br>（就这破玩意☝）<br>然而，这种方法依赖于正常的系统服务（如 Windows Update），并且在许多需要手动安装的系统上可能无法正常工作或速度很慢，因此 PowerShell 命令是更可靠、更通用的选择</p><blockquote><p>（当然我相信很多人用PowerShell安装可能也是因为把系统更新给拆烂了）🦐：6</p></blockquote><p>当然，这里是为你准备的“小彩蛋”部分，添加到原文末尾，让整个安装过程更加自动化。</p><hr><h4 id="终极懒人包：一键安装脚本-✨"><a href="#终极懒人包：一键安装脚本-✨" class="headerlink" title="终极懒人包：一键安装脚本 ✨"></a>终极懒人包：一键安装脚本 ✨</h4><p>如果你觉得逐个安装依赖和主程序太麻烦，下面这个批处理脚本 (bat) 可以帮你一键搞定，它会自动使用 PowerShell 来安装当前目录下所有的 <code>.appx</code> 和 <code>.msixbundle</code> 文件</p><h5 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h5><ol><li><p><strong>集中文件</strong>：将所有下载的应用主程序和依赖项文件（例如 <code>Microsoft.VCLibs.x64...appx</code>, <code>Microsoft.UI.Xaml...appx</code> 和应用本身）都放在同一个文件夹里</p></li><li><p><strong>下载脚本</strong> <a href="https://wwyp.lanzoul.com/io4kc364hulc">hey,bro 点一下👈🦐</a>  密码:8jjp 👈🦐 bro不要忘记密码</p></li><li><p><strong>运行脚本</strong>：右键点击 <code>install.bat</code> 文件，选择 <strong>“以管理员身份运行”</strong></p></li></ol><p>🦐：诶？话说这边怎么没配图<br>🐟：因为懒……不是，是上面教的这么详细了，大家应该学会了<br>🦐：？？懒狗<br>🐟：嘿李大爷的</p><p>好了这篇就这样吧，祝你平安快乐，拜~</p><p><img src="https://s2.loli.net/2024/11/30/SzAnRQwuq76bXge.png" alt="image_1061.png"></p><h5 id="每日好图😋"><a href="#每日好图😋" class="headerlink" title="每日好图😋"></a><span style="color: gray;">每日好图😋</span></h5><p>🦐：你应该不是直接划到下面为了看壁纸吧🤨🫵</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 系统相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Minecraft 手机游玩java版教程</title>
       <link href="/_post/minecraft-pe/"/>
       <url>/_post/minecraft-pe/</url>
@@ -187,33 +214,6 @@
             <tag> 软件推荐 </tag>
             
             <tag> 安卓软件 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>powershell安装appx</title>
-      <link href="/_post/powershell%E5%AE%89%E8%A3%85appx/"/>
-      <url>/_post/powershell%E5%AE%89%E8%A3%85appx/</url>
-      
-        <content type="html"><![CDATA[<h1 id="powersshell-安装appx"><a href="#powersshell-安装appx" class="headerlink" title="powersshell 安装appx"></a>powersshell 安装appx</h1><h4 id="重要物品"><a href="#重要物品" class="headerlink" title="重要物品"></a>重要物品</h4><ul><li><a href="https://store.rg-adguard.net/">store.rg-adguard.net</a> (appx下载站)</li><li><a href="https://apps.microsoft.com/apps">apps.microsoft.com&#x2F;apps</a> (microsoft store app web)</li><li><del>ctrl，c，v三个键</del></li></ul><p>首先，我们来到<a href="https://store.rg-adguard.net/">appx下载站</a><br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g19ea0179c08817f7204f6d3c82215413.png" alt="image_614.png"></p><p>在<a href="https://apps.microsoft.com/apps">微软商店web</a>找到你想装的uwp软件<br>(别问我为什么是uwp，因为别的软件你完全可以去对应官网下载)<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g7cb0c25c0b5d0226d4e412f4b04c5e81.png" alt="image_615.png"><br>例如我们想下载HEVC视频拓展<br>ps:很多人都是为了这玩意，不过为什么不用第三方播放器呢……？<br>随后我们来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入HEVC视频拓展的链接(其实还有别的查找，但我们要求稳~~)<br><a href="https://wwyp.lanzoul.com/iDU7g2cbrnab"><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g6bef28333e18a24340b0bac248d82968.png" alt="image_617.png"></a><br>点击appx(有的可能是msixbundle，二选一即可，当然要我说，appx足矣，还有上面的这张图片是可以点的，我把HEVC视频拓展的appx下载完扔蓝奏云了，如果你是为了这玩意点进去下载就可以了↑) </p><p>快说，谢谢分割线先生:D</p><hr><h4 id="命令安装教程"><a href="#命令安装教程" class="headerlink" title="命令安装教程"></a>命令安装教程</h4><p>接下来我们要学会一个操作<br>按住shift右键文件，你就能复制文件地址<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4ga65d899108f770dff3a3229477eaa27d.png" alt="image_618.png"><br>接下来按win+r 输入powershell <del>(营销号)</del><br><img src="https://img.picui.cn/free/2024/10/11/6709494fa2697.png" alt="image_620.png"><br>别问为什么你那没有”使用管理权限创建此任务”，你没有关闭”以管理员批准模式运行所有管理员”，至于怎么关闭……<br><a href="https://blog.csdn.net/Leloz/article/details/128474551">链接直达</a>(👈戳它，谢谢)<br>来到powershell<br>输入Add-AppxPackage -Path “appx文件的路径”<br>就像这样<img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g4a9c50efa4440a1fa89d0bed09bf043a.png" alt="image_624.png"><br>然后回车，你就会看到进度条溜过<img src="https://img.picui.cn/free/2024/10/11/67094b13dd0a7.png" alt="image_625.png"><br><del>好了，本篇文章结束</del><br>当然没有，很显然HEVC视频拓展不需要额外的依赖<br>(应该是这么叫…？)<br>老坛酸菜(ltsc)等系统版本不内置微软商店<br>需要额外来部署微软商店，而网上流传很广的方法是靠命令部署，但我很神奇的成功不了，所以……Add-AppxPackage启动！<br>(小贴士：微软商店的链接  <a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">https://apps.microsoft.com/detail/9wzdncrfjbmp</a>)<br>然后来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入<a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">微软商店的链接</a><br>你就会看到令人窒息的场景<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g7c5118fc6c5ffd21003fd2b6fce9ba83.png" alt="image_627.png"><br>没错，一堆乱七八糟的玩意，<strong>不要慌！</strong><br>接下来下载所需的<strong>依赖</strong>和<strong>软件本体安装包</strong><br>如果你仔细观看了这些玩意的名字你就会发现其实也就这点依赖</p><ul><li><strong>Microsoft.NET.Native.Framework</strong></li><li><strong>Microsoft.UI.Xaml</strong></li><li><strong>Microsoft.VCLibs</strong></li></ul><p>Microsoft.UI.Xaml有两个版本，<strong>2.4</strong>与<strong>2.8</strong>，选个顺眼的即可(选2.8)</p><p>然后选择系统对应的版本(不懂无脑<strong>x64</strong>，如果你系统不是x64那就自己选)<br>接着Add-AppxPackage -Path “appx文件的路径”<br>如果你认真看了上面的内容那肯定是会的(不会自己翻回去看:P)</p><p>当然不同的软件需要的依赖可能不同，但方法都大差不差的</p><p>还有件事，win10和win11专业版应该是自带一个”应用安装程序”<br>你点一下安装会自动安装依赖(很慢很慢，且十分不好用，不如Add-AppxPackage -Path还需要系统更新服务……)<br>ps:我系统更新就没正常过……</p><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>当然，还有最简单的方法，用这玩意<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g4ea13a8aeb90ed3c62872a6e270c8695.png" alt="image_724.png"><br>下载完appx，misx等文件，直接双击就能用这玩意安装，并且会自动安装依赖，简单来说就是非常简单，但是我都得安装appx了，你猜我能不能用微软商店🤣<br>好了这篇就这样吧，祝你平安快乐，拜~</p><p><img src="https://s2.loli.net/2024/11/30/SzAnRQwuq76bXge.png" alt="image_1061.png"></p><h5 id="每日壁纸😋"><a href="#每日壁纸😋" class="headerlink" title="每日壁纸😋"></a><span style="color: gray;">每日壁纸😋</span></h5>]]></content>
-      
-      
-      <categories>
-          
-          <category> 系统相关 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 教程 </tag>
-            
-            <tag> 系统 </tag>
             
         </tags>
       
