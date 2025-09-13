@@ -4,17 +4,25 @@
   
     
     <entry>
-      <title>powershell安装appx</title>
-      <link href="/2024/10/11/powershell%E5%AE%89%E8%A3%85appx/"/>
-      <url>/2024/10/11/powershell%E5%AE%89%E8%A3%85appx/</url>
+      <title>Minecraft 手机游玩java版教程</title>
+      <link href="/_post/minecraft-pe/"/>
+      <url>/_post/minecraft-pe/</url>
       
-        <content type="html"><![CDATA[<h1 id="powersshell-安装appx"><a href="#powersshell-安装appx" class="headerlink" title="powersshell 安装appx"></a>powersshell 安装appx</h1><h4 id="重要物品"><a href="#重要物品" class="headerlink" title="重要物品"></a>重要物品</h4><ul><li><a href="https://store.rg-adguard.net/">store.rg-adguard.net</a> (appx下载站)</li><li><a href="https://apps.microsoft.com/apps">apps.microsoft.com&#x2F;apps</a> (microsoft store app web)</li><li><del>ctrl，c，v三个键</del></li></ul><p>首先，我们来到<a href="https://store.rg-adguard.net/">appx下载站</a><br><img src="https://img.picui.cn/free/2024/10/11/670944c14b304.png" alt="image_614.png"></p><p>在<a href="https://apps.microsoft.com/apps">微软商店web</a>找到你想装的uwp软件<br>(别问我为什么是uwp，因为别的软件你完全可以去对应官网下载)<br><img src="https://img.picui.cn/free/2024/10/11/670945f5d3f08.png" alt="image_615.png"><br>例如我们想下载HEVC视频拓展<br>ps:很多人都是为了这玩意，不过为什么不用第三方播放器呢……？<br>随后我们来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入HEVC视频拓展的链接(其实还有别的查找，但我们要求稳~~)<br><a href="https://wwyp.lanzoul.com/iDU7g2cbrnab"><img src="https://img.picui.cn/free/2024/10/11/6709465c89339.png" alt="image_617.png"></a><br>点击appx(有的可能是msixbundle，二选一即可，当然要我说，appx足矣，还有上面的这张图片是可以点的，我把HEVC视频拓展的appx下载完扔蓝奏云了，如果你是为了这玩意点进去下载就可以了↑) </p><p>快说，谢谢分割线先生:D</p><hr><p>接下来我们要学会一个操作<br>按住shift右键文件，你就能复制文件地址<br><img src="https://img.picui.cn/free/2024/10/11/670948cc3f704.png" alt="image_618.png"><br>接下来按win+r 输入powershell <del>(营销号)</del><br><img src="https://img.picui.cn/free/2024/10/11/6709494fa2697.png" alt="image_620.png"><br>别问为什么你那没有”使用管理权限创建此任务”，你没有关闭”以管理员批准模式运行所有管理员”，至于怎么关闭……<br><a href="https://blog.csdn.net/Leloz/article/details/128474551">链接直达</a>(👈戳它，谢谢)<br>来到powershell<br>输入Add-AppxPackage -Path “appx文件的路径”<br>就像这样<img src="https://img.picui.cn/free/2024/10/11/67094aae9f9d3.png" alt="image_624.png"><br>然后回车，你就会看到进度条溜过<img src="https://img.picui.cn/free/2024/10/11/67094b13dd0a7.png" alt="image_625.png"><br><del>好了，本篇文章结束</del><br>当然没有，很显然HEVC视频拓展不需要额外的依赖<br>(应该是这么叫…？)<br>老坛酸菜(ltsc)等系统版本不内置微软商店<br>需要额外来部署微软商店，而网上流传很广的方法是靠命令部署，但我很神奇的成功不了，所以……Add-AppxPackage启动！<br>(小贴士：微软商店的链接  <a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">https://apps.microsoft.com/detail/9wzdncrfjbmp</a>)<br>然后来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入<a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">微软商店的链接</a><br>你就会看到令人窒息的场景<br><img src="https://img.picui.cn/free/2024/10/12/67094c869f38c.png" alt="image_627.png"><br>没错，一堆乱七八糟的玩意，接下来下载所需的依赖和软件本体安装包<br>如果你仔细观看了这些玩意的名字你就会发现其实也就这点依赖</p><ul><li>Microsoft.NET.Native.Framework</li><li>Microsoft.UI.Xaml</li><li>Microsoft.VCLibs</li></ul><p>Microsoft.UI.Xaml有两个版本，2.4与2.8，选个顺眼的即可(选2.8)<br><img src="https://img.picui.cn/free/2024/10/12/67094e1ba77ef.png" alt="image_629.png"><br>然后选择系统对应的版本(不懂无脑x64，如果你系统不是x64那就自己选)<br>接着Add-AppxPackage -Path “appx文件的路径”<br>如果你认真看了上面的内容那肯定是会的(不会自己翻回去看:P)</p><p>当然不同的软件需要的依赖可能不同，但方法都大差不差的</p><p>还有件事，win10和win11专业版应该是自带一个”应用安装程序”<br>你点一下安装会自动安装依赖(很慢很慢，且十分不好用，不如Add-AppxPackage -Path还需要系统更新服务……)<br>ps:我系统更新就没正常过……</p><p>好了这篇就这样吧，祝你平安快乐，拜~</p><p><a href="https://img.picui.cn/free/2024/10/12/670950dc255f1.png"><img src="https://img.picui.cn/free/2024/10/12/670950dc255f1.png" alt="beeb7f5391c0fc58e802a09da4f3fdca.png"></a></p>]]></content>
+        <content type="html"><![CDATA[<p>前情提要：阅读此教程可能会见到一只很惹人厌的虾，请不要理睬<br>🦐：byd你说谁呢？</p><h1 id="第一步-安装启动器"><a href="#第一步-安装启动器" class="headerlink" title="第一步-安装启动器"></a>第一步-安装启动器</h1><p>首先第一步当然是安装启动器(苹果设备可以绕道了，这是 安卓的好处.jpg)<br>以下是相关启动器的下载链接<br><strong>cn网络环境请使用蓝奏云或123网盘分流进行下载</strong></p><h3 id="ZalithLauncher"><a href="#ZalithLauncher" class="headerlink" title="ZalithLauncher"></a><strong>ZalithLauncher</strong></h3><p><strong><a href="https://github.com/ZalithLauncher/ZalithLauncher/releases/download/139100/ZalithLauncher-1.3.9.1-arm64-v8a.apk">Github</a></strong> <strong><a href="https://wwyp.lanzoul.com/igH7Z2j7m5kb">蓝奏云</a></strong> 密码:ams3<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g88b1b792c209ba5625fa5ca594a2dcfb.png" alt="image_1147.png"></p><h3 id="FoldCraftLauncher-FCL"><a href="#FoldCraftLauncher-FCL" class="headerlink" title="FoldCraftLauncher(FCL)"></a><strong>FoldCraftLauncher(FCL)</strong></h3><p><strong><a href="https://github.com/FCL-Team/FoldCraftLauncher/releases/download/1.1.9.7/FCL-release-1.1.9.7-arm64-v8a.apk">Github</a></strong> <strong><a href="https://www.123865.com/s/8BMtVv-rthWd">123pan</a></strong> 提取码:ELha<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gdcc064a5db5912f55a5cc47f464d3074.png" alt="image_1146.png"></p><h3 id="HMCL-PE"><a href="#HMCL-PE" class="headerlink" title="HMCL-PE"></a><strong>HMCL-PE</strong></h3><p><strong><a href="https://github.com/HMCL-dev/HMCL-PE/releases/download/2.0.8/HMCLPE-release.apk">Github</a></strong> <strong><a href="https://www.123865.com/s/8BMtVv-8thWd">123pan</a></strong> 提取码:h996<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g1c35fa733f196a4eb196cf60de4d9f86.png" alt="image_1149.png"></p><h1 id="第二步-打开启动器"><a href="#第二步-打开启动器" class="headerlink" title="第二步-打开启动器"></a>第二步-打开启动器</h1><p>🐟：我会以ZalithLauncher作为演示，其余的应该也大同小异<br>🦐：你懒得都演示一遍就直说</p><h2 id="1-打开ZalithLauncher并点击同意并安装"><a href="#1-打开ZalithLauncher并点击同意并安装" class="headerlink" title="1.打开ZalithLauncher并点击同意并安装"></a>1.打开ZalithLauncher并点击<strong>同意并安装</strong></h2><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g0a596b7a77084644bee5076f83087ba3.png" alt="image_1151.png"></p><h2 id="2-选择添加账户，没有正版账户或第三方账户-littleskin等-选择离线账户即可"><a href="#2-选择添加账户，没有正版账户或第三方账户-littleskin等-选择离线账户即可" class="headerlink" title="2.选择添加账户，没有正版账户或第三方账户(littleskin等)选择离线账户即可"></a>2.选择添加账户，没有<strong>正版账户</strong>或<strong>第三方账户(littleskin等)<strong>选择</strong>离线账户</strong>即可</h2><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g9805a6edfb0da1997bc4eba062990e9b.png" alt="image_1153.png"><br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g0c7031f9ad3bdab0d8586960b03c89a8.png" alt="image_1154.png"><br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gebe55453cbe4140f606abcbe20159936.png" alt="image_1155.png"></p><h2 id="3-设置一个你喜欢的用户名"><a href="#3-设置一个你喜欢的用户名" class="headerlink" title="3.设置一个你喜欢的用户名"></a>3.设置一个你喜欢的<strong>用户名</strong></h2><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g0a1c73af7792fcc21e575da98fab2c68.png" alt="image_1156.png"><br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g6da4d1aaf92cefc586cce4223c7dc45c.png" alt="image_1157.png"><br>随后点击右下角<strong>返回</strong>回到主界面</p><h2 id="4-点击启动游戏上方的草方块-下载游戏主文件"><a href="#4-点击启动游戏上方的草方块-下载游戏主文件" class="headerlink" title="4.点击启动游戏上方的草方块 下载游戏主文件"></a>4.点击启动游戏上方的<strong>草方块</strong> 下载游戏主文件</h2><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g221d8c4d01df4a0f26155d6f0b40ace2.png" alt="image_1161.png"><br>点击安装新版本-选择想玩的版本<br>先不要管mod加载器等，直接点击下载(记得勾选<strong>版本隔离</strong>)<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4ga7be1d73d3d63d0b81afb3b3f7e7c20d.png" alt="image_1163.png"><br>等待下载完成<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g469cd2b2cef1626b0c37b304fc517b87.png" alt="image_1164.png"></p><h2 id="5-点击启动游戏尝试启动"><a href="#5-点击启动游戏尝试启动" class="headerlink" title="5.点击启动游戏尝试启动"></a>5.点击<strong>启动游戏</strong>尝试启动</h2><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gd0153b8fb4fbdd053da2089e5b7207de.png" alt="image_1165.png"><br>恭喜你，成功在手机上玩到java版minecraft了！<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g9e140aaabc9656ff75bbc5b7f85dd0e6.png" alt="image_1166.png"><br>🐟：可喜可贺，可喜可贺<br>🦐：byd那mod呢<br>🐟：不急不急，我先睡会<br>🦐：¿</p><h1 id="第三步-安装mod加载器"><a href="#第三步-安装mod加载器" class="headerlink" title="第三步-安装mod加载器"></a>第三步-安装mod加载器</h1><p>玩mc不玩mod，那相当于没玩</p><p>早期如Minecraft <strong>1.7.10</strong>和<strong>1.12.2</strong>的版本拥有最广泛的mod资源，但许多<strong>早期的mod</strong>在较新版本中往往<strong>未能得到维护更新</strong>，或存在<strong>兼容性问题</strong>。相对而言，自<strong>1.17.1</strong>版本起，许多<strong>活跃mod项目</strong>都保持了<strong>持续更新和维护</strong>，为<strong>1.17.1及更高版本</strong>的用户提供了相应的mod支持。<br>🦐：说人话😅<br>🐟：byd这都听不懂，回家睡觉去吧😅<br>人话：<strong>1.7.10</strong>和<strong>1.12.2</strong>有很多<strong>经典mod</strong>，比如<strong>r键整理</strong>等，但这些mod因为各种不可控因素所以直接停更(也有很多是因为闭源，作者还懒狗导致的……如果想玩新版本就要做好很多你知道的经典<strong>老mod不兼容新版本</strong>的准备)</p><h2 id="1-了解mod加载器"><a href="#1-了解mod加载器" class="headerlink" title="1.了解mod加载器"></a>1.了解mod加载器</h2><p>Minecraft有两种加载器，<strong>forge</strong>和<strong>fabric</strong>，forge是早期知名的mod加载器，早期的如<strong>暮色森林</strong>，<strong>拔刀剑</strong>，<strong>匠魂</strong>等知名mod都是通过forge加载的<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gf397be5891c65579b65bc7d1f4b3bcce.png" alt="image_1167.png"><br>而fabric则是较高版本出现的，对比forge晚了很多，但通过fabric加载的<strong>mod作者</strong>都十分的具有<strong>开源精神</strong>，以及fabric独有的<strong>元素周期表</strong>系列(如钠，锂等)<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4ga936b82c4c3b7d6a9b71e2d0c757cfa2.png" alt="image_1169.png"><br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gd118b66434104916dd2e1faf85367a2d.png" alt="image_1170.png"><br>(如果手机玩minecraft十分推荐安装<strong>fabric</strong>和<strong>钠</strong>以提高帧率与运行效率)<br><strong>那么接下来开始实践吧</strong></p><h2 id="2-安装mod加载器"><a href="#2-安装mod加载器" class="headerlink" title="2.安装mod加载器"></a>2.安装mod加载器</h2><p>以<strong>1.24.4</strong>为例(下面有gif演示)<br>1.选择fabric<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gda3028fdf6d8bcfea86addd2215560d5.png" alt="image_1171.png"><br>2.选择fabric版本(一般直接点最上面的即可)<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g9aa5c8e7d5fe621975758ffbeca3fa37.png" alt="image_1172.png"><br>3.fabric api 同理<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g32e65ee78ace4deaa6061496c85a84a3.png" alt="image_1174.png"><br>4.勾选右上角版本隔离，点击下载<br><strong>动图演示：</strong><br><img src="https://s2.loli.net/2024/12/28/4lM5YhG3OsAVj2c.gif" alt="freecompress-GIF 2024-12-28 10-28-33.gif"><span style="color: gray;">(图床有点烂，加载可能是慢的)</span></p><h1 id="补充部分"><a href="#补充部分" class="headerlink" title="补充部分"></a>补充部分</h1><p><strong>1.性能优化</strong><br>记得你的手机并不是amd架构cpu并安装windows系统的电脑(虽然现在的手机就是移动电脑就是了)，所以玩起来肯定是没有电脑流畅的<br>所以我贴几个很棒的优化mod(当然是fabric元素周期表拉)<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g018bc7ce721c5caf23bf6e5f69989909.png" alt="image_1207.png"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 游戏相关 </category>
+          
+      </categories>
       
       
         <tags>
             
-            <tag> 系统 </tag>
+            <tag> 软件推荐 </tag>
+            
+            <tag> 游戏 </tag>
             
             <tag> 教程 </tag>
             
@@ -25,12 +33,207 @@
     
     
     <entry>
+      <title>localsend-软件推荐</title>
+      <link href="/_post/localsend-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+      <url>/_post/localsend-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="LocalSend：无需互联网的高效文件传输工具"><a href="#LocalSend：无需互联网的高效文件传输工具" class="headerlink" title="LocalSend：无需互联网的高效文件传输工具"></a><strong>LocalSend：无需互联网的高效文件传输工具</strong></h1><p>在日常生活和工作中，我们常常需要在不同设备之间传输文件。尽管有许多主流工具（如云存储或即时通讯应用）可以实现这一点，但它们通常需要互联网连接，可能还会存在隐私风险或速度限制。幸运的是，LocalSend 提供了一种更加安全、高效的解决方案——它完全基于局域网传输，无需互联网！<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gfe7ec39630bc246108ce8baf8290e01b.png" alt="image_1006.png"></p><hr><h2 id="什么是-LocalSend？"><a href="#什么是-LocalSend？" class="headerlink" title="什么是 LocalSend？"></a><strong>什么是 LocalSend？</strong></h2><p>LocalSend 是一个<strong>开源</strong>的文件传输工具，旨在通过<strong>局域网让</strong>不同设备之间快速共享文件。它支持<strong>多种平台</strong>，用户无需安装复杂的软件或配置网络，只需要确保设备连接到同一<strong>局域网</strong>即可。<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g017a9beb196666b767d5093ba512b034.png" alt="image_998.png"></p><h2 id="LocalSend-的主要功能"><a href="#LocalSend-的主要功能" class="headerlink" title="LocalSend 的主要功能"></a><strong>LocalSend 的主要功能</strong></h2><ul><li><strong>跨平台支持</strong><br>LocalSend 适用于多种设备，包括 Windows、Mac、Linux、Android、iOS，无论是电脑还是手机，你都可以轻松共享文件。</li><li><strong>点对点传输</strong><br>文件通过局域网直接传输，不依赖云存储或外部服务器，既提升了传输速度，也保障了隐私安全。</li><li><strong>无需额外设备</strong><br>不需要 U 盘、硬盘等存储介质，只需局域网内的 Wi-Fi 或热点，即可实现设备互传。</li><li><strong>操作简便</strong><br>界面设计简洁直观，用户只需选择文件并连接目标设备，即可一键完成传输。<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g2164ee17fdd5e9fd3cc1104943716742.png" alt="image_1008.png"></li></ul><hr><h2 id="LocalSend-的优势"><a href="#LocalSend-的优势" class="headerlink" title="LocalSend 的优势"></a><strong>LocalSend 的优势</strong></h2><ul><li><strong>安全性</strong>：所有传输仅限于局域网，不会上传到云端，避免了数据泄露的风险。</li><li><strong>高效性</strong>：局域网传输速度通常远高于互联网上传下载速度，特别适合传输大文件。</li><li><strong>免费开源</strong>：LocalSend 免费且源码公开，可以放一百个心使用。<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gc9b5eb87cbf5b1cac40676fe89d4416b.png" alt="image_1009.png"></li></ul><hr><h2 id="如何使用-LocalSend？"><a href="#如何使用-LocalSend？" class="headerlink" title="如何使用 LocalSend？"></a><strong>如何使用 LocalSend？</strong></h2><ol><li>前往<a href="https://localsend.org/zh-CN/download"><strong>官网</strong></a>或对应<a href="https://github.com/localsend/localsend/releases"><strong>github</strong></a>进行下载<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g8860606117e9684f312915641d4d0e8d.png" alt="image_1011.png"></li><li>选择或将文件拖入 localsend 窗口，选择传输方式 (链接传输可以不用其他设备安装localsend，仅在浏览器即可)<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g71cca9269a49348bfe25f4865e698d3d.png" alt="image_1013.png"></li><li>享受localsend带来的便利<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gb1ceff8a7ae43c11fa861b6ac3e840e7.png" alt="image_1016.png"></li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>如果你正在寻找一款<strong>简单</strong>、<strong>高效</strong>、<strong>安全</strong>的<strong>文件传输工具</strong>，<strong>LocalSend</strong> 无疑是一个<strong>绝佳选择</strong>。它不依赖互联网，传输过程<strong>便捷可靠</strong>，特别适合<strong>注重隐私</strong>和<strong>效率</strong>的用户。</p><p>好了介绍的够多了，这次可是写的非常详细的<br>🦐：不是，这是你自己写的吗？<br>🐟：shut the f**king up，这就是我亲手写的</p><p>咳咳，不要去理那只烦人的虾，这篇文章就到这了，依旧是为各位送上</p><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g8773d52980403e6304a4defd73b93201.jpg" alt="ʕ•́ᴥ•̀ʔっ♡.jpg"></p><h5 id="每日壁纸😋"><a href="#每日壁纸😋" class="headerlink" title="每日壁纸😋"></a><span style="color: gray;">每日壁纸😋</span></h5><p><span style="color: gray;">🦐：你说谁是烦人的虾！！！</span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件推荐 </tag>
+            
+            <tag> PC软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>手残联盟十周年快乐！！</title>
+      <link href="/_post/%E6%89%8B%E6%AE%8B%E8%81%94%E7%9B%9F%E5%8D%81%E5%91%A8%E5%B9%B4/"/>
+      <url>/_post/%E6%89%8B%E6%AE%8B%E8%81%94%E7%9B%9F%E5%8D%81%E5%91%A8%E5%B9%B4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="手残联盟十周年快乐！"><a href="#手残联盟十周年快乐！" class="headerlink" title="手残联盟十周年快乐！"></a>手残联盟十周年快乐！</h1><div class="video-container"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113455067565370&bvid=BV1rxDyYhEhH&cid=26691174557&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div><style>.video-container {    position: relative;    width: 100%;    padding-top: 56.25%; /* 16:9 aspect ratio (height/width = 9/16 * 100%) */}.video-container iframe {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;}</style><h3 id="手残联盟十周年快乐！！"><a href="#手残联盟十周年快乐！！" class="headerlink" title="手残联盟十周年快乐！！"></a>手残联盟十周年快乐！！</h3><p><strong>简介：</strong><br>手残联萌十岁啦！<br>这是我们几个的节日，也是与你们相伴十年的纪念日<br>我们几个相约在成都，像过去展望过的一样度了个假<br>这种轻松的日常视频，或许对我们与你们都是最好的</p><p><strong>闲言碎语：</strong><br>最早貌似是看了抽风的视频，具体是什么我也不知道了，但主要是靠逍遥小枫了解的，再到后来知道了逆风笑，成为了笑笑忠实的粉丝，到现在手残联盟的大家基本上都忙于生活或自己所热爱，追求的东西了，似乎也只有逆风笑保持着几年前的那种初心，在当今快节奏网络环境下有笑笑这种的实况主真的很难以置信了，说了这么多，那最后还是祝愿<strong>手残联盟十周年快乐吧！</strong></p><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4ga59402d16f38805710678c889b94a4f8.png" alt="image_958.png"></p><h5 id="手残联盟十周年快乐！！！"><a href="#手残联盟十周年快乐！！！" class="headerlink" title="手残联盟十周年快乐！！！"></a><span style="color: gray;">手残联盟十周年快乐！！！</span></h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> bilibli </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bilibli </tag>
+            
+            <tag> 手残联盟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Flash档案馆&amp;更好用的Flash游戏选择</title>
+      <link href="/_post/flash%E6%A1%A3%E6%A1%88%E9%A6%86-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+      <url>/_post/flash%E6%A1%A3%E6%A1%88%E9%A6%86-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="非常牛批のflash档案馆-Flashpoint-Archive"><a href="#非常牛批のflash档案馆-Flashpoint-Archive" class="headerlink" title="非常牛批のflash档案馆 Flashpoint Archive"></a><strong>非常牛批のflash档案馆 Flashpoint Archive</strong></h1><p>不多说，直接<del>跑题</del><br>我相信各位都很喜欢玩3499上的flash小游戏，童年回忆了属于是，但问题就出在flash已经被互联网淘汰，而国内flash的代理权被交给了<strong>flash中心</strong>这个byd，一堆广告，各种乱七八糟，反正这东西的风评大家应该都略知一二<br><img src="https://www.helloimg.com/i/2024/10/26/671c79836793e.png" alt="image_759.png"><br>所以我们可以安装<strong>CleanFlashPlayer</strong><br><a href="https://wwyp.lanzoul.com/iniRf1zqiwjc"><img src="https://www.helloimg.com/i/2024/10/26/671c7a3d06636.png" alt="image_760.png"></a><br><span style="color: gray;">☝这个图片插入了链接可以去下载CleanFlashPlayer，密码:db3e</span></p><p>我选的Activex(OCX) (E&#x2F;Embedded&#x2F;Desktop)那个，可以在edge中启用ie兼容模式，就可以畅玩4399<br><img src="https://www.helloimg.com/i/2024/10/26/671c7ae66bb15.png" alt="image_761.png"></p><h6 id="老爹汉堡店好玩捏"><a href="#老爹汉堡店好玩捏" class="headerlink" title="老爹汉堡店好玩捏"></a><span style="color: gray;">老爹汉堡店好玩捏</span></h6><p>当然这是一篇软件介绍，<del>虽然CleanFlashPlayer也算是软件推荐了</del>，不过我要推荐的是更加牛批，更加好用的<strong>Flashpoint Archive</strong><br><img src="https://www.helloimg.com/i/2024/10/26/671c789c786a1.png" alt="image_757.png"></p><p><a href="https://flashpointarchive.org/downloads/">官网</a>👈点进去就可以下载，记得选择压缩包版本，毕竟安装程序这个网络问题…你懂</p><p>下载好后解压运行，就回来到主页，然后在搜索栏里搜索想玩的游戏<br><img src="https://www.helloimg.com/i/2024/10/26/671c7d2563979.png" alt="image_763.png"><br>就可以回忆童年了😋<br><img src="https://www.helloimg.com/i/2024/10/27/671dfa24381b5.png" alt="image_754.png"><br><img src="https://www.helloimg.com/i/2024/10/26/671c789c68628.png" alt="image_756.png"><br><img src="https://www.helloimg.com/i/2024/10/26/671c789c6bf36.png" alt="image_758.png"><br><img src="https://www.helloimg.com/i/2024/10/26/671c789c36dec.png" alt="image_755.png"></p><p>这软件没什么技术含量，而且有中文界面，基本上会用鼠标就会用<br>当然有一件值得提的<br>《搜索的时候记得搜游戏英文名，这不是4399》<br>be like：<br><img src="https://www.helloimg.com/i/2024/10/26/671c7e3098b53.png" alt="image_765.png"></p><p>好了就这样，软件推荐是这样的，差不多就行，其余的各位自己摸索</p><p><img src="https://s2.loli.net/2024/10/26/v9fabeLOsI6Hoqh.jpg" alt="1729920998468.png"></p><h5 id="每日壁纸🤤"><a href="#每日壁纸🤤" class="headerlink" title="每日壁纸🤤"></a><span style="color: gray;">每日壁纸🤤</span></h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件推荐 </tag>
+            
+            <tag> PC软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>桌面端截图软件推荐</title>
+      <link href="/_post/%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+      <url>/_post/%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="选择适合你的截图软件"><a href="#选择适合你的截图软件" class="headerlink" title="选择适合你的截图软件"></a><strong>选择适合你的截图软件</strong></h1><h2 id="Snipaste"><a href="#Snipaste" class="headerlink" title="Snipaste"></a><strong>Snipaste</strong></h2><p>废话不多说，首先推荐我自己在用的截图软件：snipaste，我愿称之为最好用的截图软件，贴图啊，框选啊，批注啊，反正天下第一，谁用谁知道🤗<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g12e9bdd6f18c227974667f3a7f2b2a5d.png" alt="image_861.png"><br><a href="https://zh.snipaste.com/">snipaste官网</a> 👈戳一下就到了<br>当然你懂的，我还是会多说点东西，我一直在用的是2.8.5-beta，我感觉所有版本里最好的🤔<br><a href="https://bitbucket.org/liule/snipaste/downloads/">链接直达 </a>👈戳一下就到了</p><h2 id="PixPin"><a href="#PixPin" class="headerlink" title="PixPin"></a><strong>PixPin</strong></h2><p>原本优化很差，比不上snipaste一根的截图软件，但后来更新后使用体验已经蛮不错了，snipaste有赞助版(99￥，十分的昂贵，当然有能力的还是可以去官网支持)，而pixpin有很多snipaste赞助版才能用的功能，例如长截图等(不过pixpin也有会员版，具体加了什么功能可以在官方文档看，官方表述的意思是一视同仁，仅仅多了些更方便的功能而不是如snipaste一样加了很多独家功能)</p><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gbe7aa455663b32ed970af2d496430c6b.png" alt="image_847.png"></p><p><a href="https://pixpinapp.com/">pixpin官网</a> 👈戳一下就到了</p><p>当然你懂的，不过你懂的太多了，pixpin我不怎么用，不说太多，自己去试🤣</p><hr><p><strong>啊对，你是不是想问我还有什么有趣的软件，不要质疑我，你就是想问</strong><br><img src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="doge.png"></p><hr><h2 id="QQScreenShot"><a href="#QQScreenShot" class="headerlink" title="QQScreenShot"></a><strong>QQScreenShot</strong></h2><p>十分好用，用过的都说好，当然前提是你不知道前两个截图软件的情况下🤪👏<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gaa4fd48329169f2ee5e2dfc25c9f5924.png" alt="image_846.png"><br>以及翻译功能之类的<del>(那为什么不用网易有道词典，还能当文字识别用)</del></p><p>当然折腾是人进步的阶梯，所以这有个<a href="https://github.com/insoxin/QQScreenShot">github项目：QQScreenShot</a> 👈需要的自己戳一下</p><h2 id="其余的截图软件"><a href="#其余的截图软件" class="headerlink" title="其余的截图软件"></a><strong>其余的截图软件</strong></h2><p>上面三个截图软件足够了，当然，不符合你的审美？<del>不符合那特么自己写去啊！</del>我问了一嘴gpt，这些是它给的软件推荐<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4ge1074a766907ed1b4183173e2d38ab95.png" alt="0Tp_dmFwRxVpAUBy8sln4g3f7182ffb7eb6b577ff22061383e6be9.png"></p><h2 id="Windows自带截图"><a href="#Windows自带截图" class="headerlink" title="Windows自带截图"></a><strong>Windows自带截图</strong></h2><p>第三方的截图软件介绍了不少，但我相信还是有人想问：“windows作为全球最人数最多的桌面级操作系统，没有自带的截图功能吗？？？”<br>当然是有的，有很多方式，例如PrintScreen键，windows自带截图软件等等，且PrintScreen还有众多组合键，所以因为篇幅限制就不讲了<br>🦐：你特么懒得说你就直说<br>嗨~这是<a href="https://blog.csdn.net/weixin_54217081/article/details/122841478"><strong>传送门</strong></a>，很详细的介绍了windows自带的截图方法，感兴趣就去看看吧<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gb8fd73bcf162fc7231390a301dab6224.png" alt="image_996.png"><br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g23dbf8c543ee0ed2b4a31b99b793ffd2.png" alt="image_997.png"><br>好了，软件推荐，就这样吧</p><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4gda4c7143b88f0646016428089ce1d476.png" alt="n_v2d6d4514f02a1be.png"></p><h5 id="每日壁纸🤤"><a href="#每日壁纸🤤" class="headerlink" title="每日壁纸🤤"></a><span style="color: gray;">每日壁纸🤤</span></h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件推荐 </tag>
+            
+            <tag> PC软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>十分好用の虚拟键盘</title>
+      <link href="/_post/keyboard/"/>
+      <url>/_post/keyboard/</url>
+      
+        <content type="html"><![CDATA[<h1 id="十分好用的虚拟键盘"><a href="#十分好用的虚拟键盘" class="headerlink" title="十分好用的虚拟键盘"></a><span style="color: red;">十分好用的虚拟键盘</span></h1><p><span style="color: gray;">别问为什么不在<a href="/hdx/">“好东西”</a>里</span></p><p><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g2337eda0d4d09a2e4cde735ec490584a.png" alt="image_1062.png"></p><p><strong>免费、轻便、多语言和手指友好的虚拟屏幕键盘</strong></p><p>Free Virtual Keyboard适用于任何带触摸屏的Windows PC。您可以使用鼠标、触摸屏、笔或任何其他指针设备进行打字。</p><p>这款便携式键盘的按键大到足以用指尖打字。此外，Free Virtual Keyboard还允许行动不便的人使用指针设备键入数据。</p><p>Free Virtual Keyboard附带4个不同的虚拟键盘，支持系统中安装的所有语言和键盘布局。</p><p><strong>在电脑屏幕上更改键盘的大小、颜色和透明度</strong></p><p>您可以随时一键更改键盘的大小、颜色和透明度。在全屏模式下，虚拟键盘会在调用时自动调整大小以适应屏幕的宽度。这意味着它可以在横向和纵向方向上工作，而其他键盘则无法做到。</p><p><strong>自动重复功能</strong></p><p>自动重复功能（按住任意键以连续重复相同的字符）是自动的。连续按下时，所有相关按键都将自动重复。</p><h3 id="以上依旧是十分常见的客套话"><a href="#以上依旧是十分常见的客套话" class="headerlink" title="以上依旧是十分常见的客套话 "></a><span style="color: purple;">以上依旧是十分常见的客套话</span> <img src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" style="vertical-align:middle;"></h3><p>不过说起来这个键盘还是有点兼容问题，去大名鼎鼎的<strong>希沃白板</strong>似乎打不开(当然是win10的，估计是因为安卓+windows导致的…？)</p><p><a href="https://wwyp.lanzoul.com/i9A632d5fune"><strong>下载链接</strong></a> 👈点它，谢谢<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g4ea13a8aeb90ed3c62872a6e270c8695.png" alt="image_724.png"><br>安装方法<a href="/2024/10/11/powershell%E5%AE%89%E8%A3%85appx/"><strong>前文</strong></a>说过了，我相信你会(<del>不会就滚回去看</del>)，反正写了整整一篇的教程，去看看总归不会错的😀</p><p>既然是软件推荐，写太多也没多大用，就这样，拜👋</p><p><img src="https://s2.loli.net/2024/10/22/lsDMj7qOvN3QLSC.png" alt="image_719.png"></p><h5 id="每日壁纸🤤"><a href="#每日壁纸🤤" class="headerlink" title="每日壁纸🤤"></a><span style="color: gray;">每日壁纸🤤</span></h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件推荐 </tag>
+            
+            <tag> PC软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安卓软件推荐 - 瞬译（瞬间翻译）</title>
+      <link href="/_post/%E7%9E%AC%E8%AF%91-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+      <url>/_post/%E7%9E%AC%E8%AF%91-%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安卓软件推荐-瞬译（瞬间翻译）"><a href="#安卓软件推荐-瞬译（瞬间翻译）" class="headerlink" title="安卓软件推荐 - 瞬译（瞬间翻译）"></a><strong>安卓软件推荐 - 瞬译（瞬间翻译）</strong></h1><p><img src="https://img.picui.cn/free/2024/10/20/6715242c2b5a9.png" alt="image_695_upscayl_4x_remacri.png"></p><span style="color: gray;">瞬译是一款强大的屏幕翻译应用程序，支持超过100种语言的准确翻译。 此应用非常适合社交媒体使用，可以帮助您快速翻译朋友的聊天信息、外语博客文章、网站等，让您不再受制于语言障碍。使用瞬译，您可以在任何应用程序中翻译任何文字内容，包括 WhatsApp、YouTube、浏览器和 Twitter 等流行应用程序，而无需在翻译软件之间来回切换。 此外，该应用程序还具有离线模式，以节省数据使用量。主要功能：应用程序翻译： 瞬译可以立即翻译应用程序中的文字内容，无论是贴文/博客、聊天对话还是简单文字，都不需要在翻译软件之间切换。聊天翻译： 在使用各种社交聊天软件与外国朋友聊天时，实时翻译对话框中的聊天内容; 它支持对话气泡框、输入框和剪贴板文字的翻译。浮动翻译： 将浮动球拖到您想要翻译的位置，立即将其翻译成您的语言。 点击浮动球进行全屏翻译，为您翻译整个屏幕。漫画模式： 经过特别处理的垂直文字，让您更容易阅读任何语言的漫画，消除语言阅读障碍。收集文字： 收集您想要后期查看或编辑的文字。图片翻译： 使用最新的文字识别人工智能高精度翻译图片上的文字。自动翻译： 自动实时翻译屏幕上选定的区域，在观看带字幕的电影或玩游戏时非常有用！</span><h4 id="客套话说完了-字数凑完了-，简单来说就是用起来的确很好用，比某UI的某爱翻译好得多的多，因为可以用谷歌在线翻译，所以结果也蛮准确"><a href="#客套话说完了-字数凑完了-，简单来说就是用起来的确很好用，比某UI的某爱翻译好得多的多，因为可以用谷歌在线翻译，所以结果也蛮准确" class="headerlink" title="客套话说完了(字数凑完了)，简单来说就是用起来的确很好用，比某UI的某爱翻译好得多的多，因为可以用谷歌在线翻译，所以结果也蛮准确"></a>客套话说完了<del>(字数凑完了)</del>，简单来说就是用起来的确很好用，比某UI的某爱翻译好得多的多，因为可以用谷歌在线翻译，所以结果也蛮准确</h4><p>官网链接 <a href="https://play.google.com/store/apps/details?id=com.spaceship.screen.textcopy&pcampaignid=web_share">瞬译</a> 👈链接直达</p><p><img src="https://img.picui.cn/free/2024/10/20/6715203e4407e.png" alt="image_694.png"></p><p>当然你懂的<a href="https://wwyp.lanzoul.com/tp/igVYL2d0kluh">😀👋</a> <span style="color: gray;">密码:f8zq</span><br>看到插入链接的你be like：👈🤪<br>发现要密码的你be like：👎😅🤏<br>回来看发现密码的你be like：🤓☝<br>下载到软件的你be like：😋👍<br>研究软件怎么用的你be like：🤔</p><p>好了就这样，拜😀👋</p><p><img src="https://s2.loli.net/2024/10/21/VZuwzW9Xbj1CFvT.jpg" alt="1729442674197.png"></p><h5 id="每日壁纸🤤"><a href="#每日壁纸🤤" class="headerlink" title="每日壁纸🤤"></a><span style="color: gray;">每日壁纸🤤</span></h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件推荐 </tag>
+            
+            <tag> 安卓软件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>powershell安装appx</title>
+      <link href="/_post/powershell%E5%AE%89%E8%A3%85appx/"/>
+      <url>/_post/powershell%E5%AE%89%E8%A3%85appx/</url>
+      
+        <content type="html"><![CDATA[<h1 id="powersshell-安装appx"><a href="#powersshell-安装appx" class="headerlink" title="powersshell 安装appx"></a>powersshell 安装appx</h1><h4 id="重要物品"><a href="#重要物品" class="headerlink" title="重要物品"></a>重要物品</h4><ul><li><a href="https://store.rg-adguard.net/">store.rg-adguard.net</a> (appx下载站)</li><li><a href="https://apps.microsoft.com/apps">apps.microsoft.com&#x2F;apps</a> (microsoft store app web)</li><li><del>ctrl，c，v三个键</del></li></ul><p>首先，我们来到<a href="https://store.rg-adguard.net/">appx下载站</a><br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g19ea0179c08817f7204f6d3c82215413.png" alt="image_614.png"></p><p>在<a href="https://apps.microsoft.com/apps">微软商店web</a>找到你想装的uwp软件<br>(别问我为什么是uwp，因为别的软件你完全可以去对应官网下载)<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g7cb0c25c0b5d0226d4e412f4b04c5e81.png" alt="image_615.png"><br>例如我们想下载HEVC视频拓展<br>ps:很多人都是为了这玩意，不过为什么不用第三方播放器呢……？<br>随后我们来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入HEVC视频拓展的链接(其实还有别的查找，但我们要求稳~~)<br><a href="https://wwyp.lanzoul.com/iDU7g2cbrnab"><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g6bef28333e18a24340b0bac248d82968.png" alt="image_617.png"></a><br>点击appx(有的可能是msixbundle，二选一即可，当然要我说，appx足矣，还有上面的这张图片是可以点的，我把HEVC视频拓展的appx下载完扔蓝奏云了，如果你是为了这玩意点进去下载就可以了↑) </p><p>快说，谢谢分割线先生:D</p><hr><h4 id="命令安装教程"><a href="#命令安装教程" class="headerlink" title="命令安装教程"></a>命令安装教程</h4><p>接下来我们要学会一个操作<br>按住shift右键文件，你就能复制文件地址<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4ga65d899108f770dff3a3229477eaa27d.png" alt="image_618.png"><br>接下来按win+r 输入powershell <del>(营销号)</del><br><img src="https://img.picui.cn/free/2024/10/11/6709494fa2697.png" alt="image_620.png"><br>别问为什么你那没有”使用管理权限创建此任务”，你没有关闭”以管理员批准模式运行所有管理员”，至于怎么关闭……<br><a href="https://blog.csdn.net/Leloz/article/details/128474551">链接直达</a>(👈戳它，谢谢)<br>来到powershell<br>输入Add-AppxPackage -Path “appx文件的路径”<br>就像这样<img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g4a9c50efa4440a1fa89d0bed09bf043a.png" alt="image_624.png"><br>然后回车，你就会看到进度条溜过<img src="https://img.picui.cn/free/2024/10/11/67094b13dd0a7.png" alt="image_625.png"><br><del>好了，本篇文章结束</del><br>当然没有，很显然HEVC视频拓展不需要额外的依赖<br>(应该是这么叫…？)<br>老坛酸菜(ltsc)等系统版本不内置微软商店<br>需要额外来部署微软商店，而网上流传很广的方法是靠命令部署，但我很神奇的成功不了，所以……Add-AppxPackage启动！<br>(小贴士：微软商店的链接  <a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">https://apps.microsoft.com/detail/9wzdncrfjbmp</a>)<br>然后来到<a href="https://store.rg-adguard.net/">appx下载站</a>输入<a href="https://apps.microsoft.com/detail/9wzdncrfjbmp">微软商店的链接</a><br>你就会看到令人窒息的场景<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g7c5118fc6c5ffd21003fd2b6fce9ba83.png" alt="image_627.png"><br>没错，一堆乱七八糟的玩意，<strong>不要慌！</strong><br>接下来下载所需的<strong>依赖</strong>和<strong>软件本体安装包</strong><br>如果你仔细观看了这些玩意的名字你就会发现其实也就这点依赖</p><ul><li><strong>Microsoft.NET.Native.Framework</strong></li><li><strong>Microsoft.UI.Xaml</strong></li><li><strong>Microsoft.VCLibs</strong></li></ul><p>Microsoft.UI.Xaml有两个版本，<strong>2.4</strong>与<strong>2.8</strong>，选个顺眼的即可(选2.8)</p><p>然后选择系统对应的版本(不懂无脑<strong>x64</strong>，如果你系统不是x64那就自己选)<br>接着Add-AppxPackage -Path “appx文件的路径”<br>如果你认真看了上面的内容那肯定是会的(不会自己翻回去看:P)</p><p>当然不同的软件需要的依赖可能不同，但方法都大差不差的</p><p>还有件事，win10和win11专业版应该是自带一个”应用安装程序”<br>你点一下安装会自动安装依赖(很慢很慢，且十分不好用，不如Add-AppxPackage -Path还需要系统更新服务……)<br>ps:我系统更新就没正常过……</p><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>当然，还有最简单的方法，用这玩意<br><img src="https://b.bdstatic.com/comment/0Tp_dmFwRxVpAUBy8sln4g4ea13a8aeb90ed3c62872a6e270c8695.png" alt="image_724.png"><br>下载完appx，misx等文件，直接双击就能用这玩意安装，并且会自动安装依赖，简单来说就是非常简单，但是我都得安装appx了，你猜我能不能用微软商店🤣<br>好了这篇就这样吧，祝你平安快乐，拜~</p><p><img src="https://s2.loli.net/2024/11/30/SzAnRQwuq76bXge.png" alt="image_1061.png"></p><h5 id="每日壁纸😋"><a href="#每日壁纸😋" class="headerlink" title="每日壁纸😋"></a><span style="color: gray;">每日壁纸😋</span></h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> 系统相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>赛博超能力</title>
-      <link href="/2024/10/11/%E8%B5%9B%E5%8D%9A%E8%B6%85%E8%83%BD%E5%8A%9B/"/>
-      <url>/2024/10/11/%E8%B5%9B%E5%8D%9A%E8%B6%85%E8%83%BD%E5%8A%9B/</url>
+      <link href="/_post/%E8%B5%9B%E5%8D%9A%E8%B6%85%E8%83%BD%E5%8A%9B/"/>
+      <url>/_post/%E8%B5%9B%E5%8D%9A%E8%B6%85%E8%83%BD%E5%8A%9B/</url>
       
         <content type="html"><![CDATA[<h1 id="每周一次的赛博超能力来了"><a href="#每周一次的赛博超能力来了" class="headerlink" title="每周一次的赛博超能力来了"></a>每周一次的赛博超能力来了</h1><h3 id="附-请截图食用"><a href="#附-请截图食用" class="headerlink" title="(附:请截图食用)"></a><span style="color:#e73737">(附:请截图食用)</span></h3><p><img src="https://www.helloimg.com/i/2024/10/11/67093ad6278c9.gif" alt="1.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae21c577.gif" alt="2.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae2153fc.gif" alt="3.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae215de2.gif" alt="4.gif"><br><img src="https://www.helloimg.com/i/2024/10/11/67093ae21dfc4.gif" alt="5.gif"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 好玩的 </category>
+          
+      </categories>
       
       
         <tags>
@@ -45,11 +248,17 @@
     
     <entry>
       <title>《意大利面拌42号混凝土》</title>
-      <link href="/2024/10/05/%E6%88%91%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%84%8F%E5%A4%A7%E5%88%A9%E9%9D%A2%E5%B0%B1%E5%BA%94%E8%AF%A5%E6%8B%8C42%E5%8F%B7%E6%B7%B7%E5%87%9D%E5%9C%9F/"/>
-      <url>/2024/10/05/%E6%88%91%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%84%8F%E5%A4%A7%E5%88%A9%E9%9D%A2%E5%B0%B1%E5%BA%94%E8%AF%A5%E6%8B%8C42%E5%8F%B7%E6%B7%B7%E5%87%9D%E5%9C%9F/</url>
+      <link href="/_post/%E6%84%8F%E5%A4%A7%E5%88%A9%E9%9D%A2%E6%8B%8C42%E5%8F%B7%E6%B7%B7%E5%87%9D%E5%9C%9F/"/>
+      <url>/_post/%E6%84%8F%E5%A4%A7%E5%88%A9%E9%9D%A2%E6%8B%8C42%E5%8F%B7%E6%B7%B7%E5%87%9D%E5%9C%9F/</url>
       
         <content type="html"><![CDATA[<h2 id="原视频"><a href="#原视频" class="headerlink" title="原视频"></a>原视频</h2><div class="video-container"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=218871639&bvid=BV1o8411x7aE&cid=855664393&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div><h2 id="红红火火恍恍惚惚"><a href="#红红火火恍恍惚惚" class="headerlink" title="红红火火恍恍惚惚"></a>红红火火恍恍惚惚</h2><div class="video-container"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112847078035222&bvid=BV1fneYeTEXi&cid=500001627124956&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div><h3 id="原作者频道：https-www-bilibili-com-video-BV1o8411x7aE"><a href="#原作者频道：https-www-bilibili-com-video-BV1o8411x7aE" class="headerlink" title="原作者频道：https://www.bilibili.com/video/BV1o8411x7aE"></a>原作者频道：<a href="https://www.bilibili.com/video/BV1o8411x7aE">https://www.bilibili.com/video/BV1o8411x7aE</a></h3>]]></content>
       
+      
+      <categories>
+          
+          <category> bilibli </category>
+          
+      </categories>
       
       
         <tags>
@@ -57,6 +266,8 @@
             <tag> 意大利面 </tag>
             
             <tag> 42号混凝土 </tag>
+            
+            <tag> bilibli </tag>
             
         </tags>
       
@@ -66,24 +277,24 @@
     
     <entry>
       <title>部分游戏的伪局域网联机</title>
-      <link href="/2024/09/20/%E9%83%A8%E5%88%86%E6%B8%B8%E6%88%8F%E7%9A%84%E4%BC%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/"/>
-      <url>/2024/09/20/%E9%83%A8%E5%88%86%E6%B8%B8%E6%88%8F%E7%9A%84%E4%BC%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/</url>
+      <link href="/_post/%E9%83%A8%E5%88%86%E6%B8%B8%E6%88%8F%E7%9A%84%E4%BC%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/"/>
+      <url>/_post/%E9%83%A8%E5%88%86%E6%B8%B8%E6%88%8F%E7%9A%84%E4%BC%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA/</url>
       
         <content type="html"><![CDATA[<h1 id="部分游戏的伪局域网联机"><a href="#部分游戏的伪局域网联机" class="headerlink" title="部分游戏的伪局域网联机"></a>部分游戏的伪局域网联机</h1><h3 id="一、需要准备的软件"><a href="#一、需要准备的软件" class="headerlink" title="一、需要准备的软件"></a>一、需要准备的软件</h3><ul><li><strong>Radmin</strong> (首选，不需要登录，安装即用)<br><a href="www.radmin-lan.cn">www.radmin-lan.cn</a></li><li><strong>蒲公英游戏版</strong> (备选，略麻烦，需要登录)<br><a href="pgy.oray.com/product/game">pgy.oray.com&#x2F;product&#x2F;game</a><br>(请按照系统需求下载对应版本，一般选择64位)<br><img src="https://img.picui.cn/free/2024/09/20/66ed889d15e47.png" alt="image_465.png"></li><li><strong>TeamViewer</strong> (严重不推荐，使用麻烦，效果不稳，本篇博文不讨论)<br><a href="www.teamviewer.com">www.teamviewer.com</a></li></ul><hr><h3 id="二、如何使用-Radmin"><a href="#二、如何使用-Radmin" class="headerlink" title="二、如何使用 Radmin"></a>二、如何使用 Radmin</h3><p><font color="gray">接下来以 Radmin 和 Minecraft 进行演示</font></p><ol><li><p>首先安装并运行 Radmin。<br>(不要告诉我你不会安装软件 😅)</p></li><li><p>你会来到这个界面。<br><img src="https://img.picui.cn/free/2024/09/20/66ed8a4a8ef4f.png" alt="image_466.png"></p></li><li><p>点击<strong>网络</strong>，在展开的两个选项中选择<strong>创建或加入网络</strong>。<br><img src="https://img.picui.cn/free/2024/09/20/66ed8ade15f60.png" alt="image_468.png"></p></li><li><p>点击<strong>创建网络</strong>，随便输入一个名字和密码然后点击<strong>创建</strong>。</p></li><li><p>完成第一步后，来到另一台设备。</p></li></ol><h3 id="三、在另一台设备中加入网络"><a href="#三、在另一台设备中加入网络" class="headerlink" title="三、在另一台设备中加入网络"></a>三、在另一台设备中加入网络</h3><ol><li><p>照旧安装运行 Radmin。<br><img src="https://img.picui.cn/free/2024/09/20/66ed8cfbd7171.png" alt="image_469.png"></p></li><li><p>点击<strong>加入网络</strong><br>(记得点击<strong>私人网络</strong>)<br><img src="https://img.picui.cn/free/2024/09/20/66ed8d833af20.png" alt="image_470.png"></p></li><li><p>(甜豆腐腦吃多了也可以ping一下下看看)<br><img src="https://img.picui.cn/free/2024/09/20/66ed8e12174db.png" alt="image_471.png"></p></li><li><p>在 MC 中启动局域网联机。<br><img src="https://img.picui.cn/free/2024/09/20/66ed8f122fcf2.png" alt="image_472.png"><br><img src="https://img.picui.cn/free/2024/09/20/66ed8f4d6aacf.png" alt="image_473.png"><br>(懂的都懂↑)</p></li><li><p>接下来点击<strong>多人游戏</strong>，直接连接。<br><img src="https://img.picui.cn/free/2024/09/20/66ed9236c2713.png" alt="image_475.png"><br><img src="https://img.picui.cn/free/2024/09/20/66ed92ab11aab.png" alt="image_476.png"></p></li><li><p>在 Radmin 中查看主机的 IP，复制粘贴然后添加端口。<br>例如这样：192.168.0.1:25565<br><img src="https://img.picui.cn/free/2024/09/20/66ed93a1e0d9c.png" alt="image_480.png"></p></li><li><p>点击<strong>加入服务器</strong>，然后恭喜你，可以快乐的跟朋友玩耍了<br>(不过找个能陪你玩的朋友似乎比流畅的联机更困难 😅)</p></li></ol><h3 id="四、蒲公英游戏版"><a href="#四、蒲公英游戏版" class="headerlink" title="四、蒲公英游戏版"></a>四、蒲公英游戏版</h3><p>蒲公英游戏版原理同理，至于细节自己研究 (懒癌发作)。</p><hr><p><img src="https://img.picui.cn/free/2024/09/20/66ed953444925.png" alt="image_208.png"></p><h6 id="祝各位玩得开心"><a href="#祝各位玩得开心" class="headerlink" title="祝各位玩得开心"></a>祝各位玩得开心</h6>]]></content>
       
       
       <categories>
           
-          <category> 游戏 </category>
+          <category> 游戏相关 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> 游戏 </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> 联机 </tag>
             
@@ -95,11 +306,17 @@
     
     <entry>
       <title>一篇没用的文章</title>
-      <link href="/2024/04/20/%E4%B8%80%E7%AF%87%E6%B2%A1%E7%94%A8%E7%9A%84%E6%96%87%E7%AB%A0/"/>
-      <url>/2024/04/20/%E4%B8%80%E7%AF%87%E6%B2%A1%E7%94%A8%E7%9A%84%E6%96%87%E7%AB%A0/</url>
+      <link href="/_post/%E4%B8%80%E7%AF%87%E6%B2%A1%E7%94%A8%E7%9A%84%E6%96%87%E7%AB%A0/"/>
+      <url>/_post/%E4%B8%80%E7%AF%87%E6%B2%A1%E7%94%A8%E7%9A%84%E6%96%87%E7%AB%A0/</url>
       
         <content type="html"><![CDATA[<h1 id="一篇没用的文章"><a href="#一篇没用的文章" class="headerlink" title="一篇没用的文章"></a>一篇没用的文章</h1><h4 id="hexo安装教程"><a href="#hexo安装教程" class="headerlink" title="(hexo安装教程)"></a>(hexo安装教程)</h4><h6 id="来自深度睡眠-部分图片来源于网络"><a href="#来自深度睡眠-部分图片来源于网络" class="headerlink" title="来自深度睡眠(部分图片来源于网络)"></a>来自<span style="color:gray">深度睡眠</span>(部分图片来源于网络)</h6><p>关于怎么在github page搭建hexo博客  </p><p>首先进入<a href="https://github.com/">github </a>(点击即可)<br>然后登录(没有的自己注册一个)</p><ul><li>github page配置篇</li></ul><h6 id="推荐使用fastgithub改善网络环境"><a href="#推荐使用fastgithub改善网络环境" class="headerlink" title="推荐使用fastgithub改善网络环境"></a>推荐使用fastgithub改善网络环境</h6><p> 链接直达(点击即可)<br> <a href="https://github.com/WangGithubUser/FastGithub/releases">github发布页</a><br> <a href="https://gitee.com/chcrazy/FastGithub/releases">gitee发布页</a> (内网环境建议使用gitee发布页下载)</p><p>接下来建一个新项目<br> <img src="https://img.picui.cn/free/2024/09/17/66e981c934f59.png" alt="image_79.png"><br>推荐设置就像这样(比较无脑)<br>注：dhzyfun.github.io仅供参考，实际还是需要按照你的github用户名来填写<br>项目名字格式是 用户名+github.io，这么填写项目名github会送你一个二级域名，不用为域名的事情发愁(私库发布github pages需要付费，我的建议是公开项目，当然有钱随意，还有开源协议挑个自己顺眼的就行)<br> <img src="https://img.picui.cn/free/2024/09/17/66e981c933786.png" alt="image_80.png"></p><p>然后你就得到了一个github pages</p><ul><li>安装hexo</li></ul><p>首先安装一个node.js</p><p>这是两个下载站，<a href="https://nodejs.cn/download/">node.js中文站</a>和<a href="https://nodejs.org/en">node.js官网下载站</a>，至于选哪个按需求来  </p><p>然后安装一个git<br>(不会用命令部署的可以用<a href="https://desktop.github.com/">github desktop</a>，但我的建议是用<a href="https://git-scm.com/downloads">git</a>)  </p><p>接着找个风水宝地建个文件夹(或者直接在磁盘根目录)，用cmd进入这个文件夹<br>(我的建议是直接在文件夹地址输入cmd，不会就慢慢cd吧)<br>然后输入命令<code>npm install -g hexo-cli</code>全局安装hexo<br>接下来输入命令<code>hexo init your_blog</code>获取到hexo博客文件<br>(your_blog可以换成别的名字，但最好是英文的，进度条可能会很慢，如果卡死建议尝试使用fastgithub改善网络环境)<br>如果安装成功your_blog(或者你输入的文件夹名字)里会多出一堆莫名其妙的玩意，这些就是hexo的文件了<br>找到并打开 _config.yml 向下拉，找到  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:  </span><br><span class="line">  type: git  </span><br><span class="line">  repo: https://github.com/githubname/name.github.io.git  </span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure><p>将repo改成你的name.github.io<br>例如dhzyfun就是<a href="https://github.com/hzyfun/hzyfun.github.io.git">https://github.com/hzyfun/hzyfun.github.io.git</a></p><ul><li>部署hexo到github pages</li></ul><p>在更改_config.yml完成后，输入命令<code>npm install hexo-deployer-git --save</code>  </p><p>然后输入<code>hexo clean</code>和<code>hexo deploy</code>  </p><p>最后访问你的github.io.git就能看到hello world了(乐<br> <img src="https://img.picui.cn/free/2024/09/17/66e981c933fa3.png" alt="landscape.png"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 没用的 </category>
+          
+      </categories>
       
       
         <tags>
