@@ -1,0 +1,11 @@
+# Cloudflare Pages 重定向规则
+# 文档: https://developers.cloudflare.com/pages/platform/redirects/
+
+# 示例：旧路径重定向到新路径
+# /old-page /new-page 301
+
+# 强制 HTTPS（CF Pages 默认已启用，此处作为备用）
+# http://* https://:splat 301
+
+# 移除 .html 扩展名（可选，提升 URL 美观度）
+# /:slug.html /:slug 301

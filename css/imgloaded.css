@@ -1,11 +1,16 @@
-/* 首页头图加载样式 */
+/* 首页头图加载样式 - 性能优化版 */
 .pl-container {  
   width: 100%;  
   height: 100%;  
   position: relative;  
   overflow: hidden;  
-  will-change: transform;
-  animation: blur-to-clear 2s cubic-bezier(.62,.21,.25,1) 0s 1 normal backwards running, scale 1.5s cubic-bezier(.62,.21,.25,1) 0s 1 both;
+  /* GPU 加速优化 */
+  will-change: filter, transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* 优化动画：缩短时间，使用更流畅的曲线 */
+  animation: blur-to-clear 1s ease-out 0s 1 normal backwards running, 
+             scale 1s ease-out 0s 1 both;
 }  
 .pl-img {  
   width: 100%;  
@@ -15,12 +20,14 @@
   background-size: cover;  
   background-repeat: no-repeat;  
   opacity: 0;  
-  transition: opacity 1s;  
+  transition: opacity 0.5s ease-out;
+  /* GPU 加速 */
+  transform: translateZ(0);
 }  
 
 @keyframes blur-to-clear {  
   0% {  
-    filter: blur(50px);  
+    filter: blur(20px);  
     opacity: 1;  
   }  
   100% {  
@@ -31,11 +38,11 @@
 
 @keyframes scale {  
   0% {  
-    transform: scale(1.5);  
+    transform: scale(1.1) translateZ(0);  
     opacity: 0;  
   }  
   100% {  
-    transform: scale(1);  
+    transform: scale(1) translateZ(0);  
     opacity: 1;  
   }  
 }  
@@ -44,5 +51,5 @@
   opacity: 1;  
 }  
 .pl-blur {  
-  filter: blur(50px);
+  filter: blur(20px);
 }

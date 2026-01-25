@@ -1,0 +1,43 @@
+# Cloudflare Pages 自定义 HTTP 头配置
+# 文档: https://developers.cloudflare.com/pages/platform/headers/
+
+# 全站默认缓存策略
+/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# HTML 页面 - 短期缓存，允许重新验证
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# 静态资源 - 长期缓存（1年）
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/custom/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Service Worker - 不缓存，总是获取最新
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# 字体文件 - 长期缓存
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+# 安全头 - 所有页面
+/*
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()

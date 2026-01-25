@@ -1,6 +1,7 @@
-// 首页头图加载优化
+// 首页头图加载优化 - 性能优化版
 /**
  * 实现图片渐进加载效果
+ * 优化：先加载小图，完成后再加载大图，避免同时加载导致卡顿
  */
 class ProgressiveLoad {
   constructor(smallSrc, largeSrc) {
@@ -23,20 +24,31 @@ class ProgressiveLoad {
     this.smallImg.onload = this._onSmallLoaded.bind(this);
     this.largeImg.onload = this._onLargeLoaded.bind(this);
   }
-  // 开始加载图片
+  // 开始加载图片 - 优化：先加载小图
   progressiveLoad() {
     this.smallImg.src = this.smallSrc;
-    this.largeImg.src = this.largeSrc;
+    // 不再同时加载大图，改为小图加载完成后再加载
   }
   // 大图加载完成
   _onLargeLoaded() {
-    this.largeStage.classList.add('pl-visible');
-    this.largeStage.style.backgroundImage = `url('${this.largeSrc}')`;
+    // 使用 requestAnimationFrame 确保在下一帧渲染，避免卡顿
+    requestAnimationFrame(() => {
+      this.largeStage.classList.add('pl-visible');
+      this.largeStage.style.backgroundImage = `url('${this.largeSrc}')`;
+      // 大图显示后，移除小图的模糊效果
+      this.smallStage.classList.remove('pl-blur');
+    });
   }
   // 小图加载完成
   _onSmallLoaded() {
-    this.smallStage.classList.add('pl-visible');
-    this.smallStage.style.backgroundImage = `url('${this.smallSrc}')`;
+    requestAnimationFrame(() => {
+      this.smallStage.classList.add('pl-visible');
+      this.smallStage.style.backgroundImage = `url('${this.smallSrc}')`;
+      // 小图加载完成后，延迟加载大图，避免同时渲染
+      setTimeout(() => {
+        this.largeImg.src = this.largeSrc;
+      }, 100);
+    });
   }
 }
 
