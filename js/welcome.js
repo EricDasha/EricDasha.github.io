@@ -1,58 +1,53 @@
-// IP 地理位置欢迎信息 - 增强版（带缓存和本地预览支持）
+// IP 地理位置欢迎信息 - 智能缓存版
 // 特性：
-// 1. localStorage 缓存 IP 数据（有效期 24 小时）
-// 2. 本地预览/请求失败时显示降级信息
-// 3. 使用 ip-api.com（无需 API Key）
+// 1. 智能缓存：IP 变化时才重新请求 API
+// 2. IPv6 特殊处理：显示"先进的技术"
+// 3. IPv4 检测失败：显示"?"
+// 4. 多 API 备用：ip-api.com 被墙时有备选
 
-let ipLocation = null;
 const CACHE_KEY = 'welcome_ip_cache';
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24小时缓存
+let ipLocation = null;
 
-// 尝试从缓存获取 IP 数据
-function getCachedIP() {
-    try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-            const data = JSON.parse(cached);
-            if (Date.now() - data.timestamp < CACHE_DURATION) {
-                return data.ipData;
-            }
-        }
-    } catch (e) {
-        console.log('缓存读取失败:', e);
-    }
-    return null;
+// 判断是否为 IPv6 地址
+function isIPv6(ip) {
+    return ip && ip.includes(':');
 }
 
-// 保存 IP 数据到缓存
-function cacheIP(ipData) {
+// 判断是否为 IPv4 地址
+function isIPv4(ip) {
+    return ip && /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(ip);
+}
+
+// 获取缓存数据
+function getCache() {
+    try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        return cached ? JSON.parse(cached) : null;
+    } catch (e) {
+        return null;
+    }
+}
+
+// 保存缓存数据
+function setCache(data) {
     try {
         localStorage.setItem(CACHE_KEY, JSON.stringify({
-            ipData: ipData,
+            ...data,
             timestamp: Date.now()
         }));
     } catch (e) {
-        console.log('缓存写入失败:', e);
+        console.log('缓存写入失败');
     }
 }
 
-// 获取 IP 信息（带缓存和降级处理）
-function fetchIPLocation() {
-    // 先尝试从缓存获取
-    const cached = getCachedIP();
-    if (cached) {
-        ipLocation = cached;
-        showWelcome();
-        return;
-    }
-
-    // 检测是否为本地环境
+// 先获取当前 IP，再决定是否需要查询归属地
+async function fetchIPLocation() {
+    // 检测本地环境
     const isLocalhost = window.location.hostname === 'localhost' ||
         window.location.hostname === '127.0.0.1' ||
         window.location.hostname.startsWith('192.168.');
 
     if (isLocalhost) {
-        // 本地预览模式：显示模拟数据
         ipLocation = {
             country: '本地预览',
             regionName: '开发环境',
@@ -66,36 +61,103 @@ function fetchIPLocation() {
         return;
     }
 
-    // 从 ip-api.com 获取
-    fetch('https://ip-api.com/json/?lang=zh-CN&fields=status,country,regionName,city,lat,lon,query')
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                ipLocation = data;
-                cacheIP(data); // 缓存成功的数据
-                showWelcome();
-            } else {
-                handleIPError();
-            }
-        })
-        .catch(err => {
-            console.log('IP 获取失败:', err);
-            handleIPError();
-        });
-}
+    try {
+        // 步骤1：先获取当前 IP（使用 ipify，支持 IPv4/IPv6 检测）
+        // 备选 API：https://api64.ipify.org（支持 IPv6）
+        const ipResponse = await fetch('https://api64.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        const currentIP = ipData.ip;
 
-// IP 获取失败的降级处理
-function handleIPError() {
-    ipLocation = {
-        country: '神秘来客',
-        regionName: '',
-        city: '',
-        lat: 0,
-        lon: 0,
-        query: '未知',
-        isError: true
-    };
-    showWelcome();
+        // 步骤2：检查缓存中的 IP 是否一致
+        const cached = getCache();
+        if (cached && cached.query === currentIP) {
+            // IP 没变，直接使用缓存
+            ipLocation = cached;
+            showWelcome();
+            return;
+        }
+
+        // 步骤3：IP 变化或无缓存，需要查询归属地
+        // IPv6 地址特殊处理
+        if (isIPv6(currentIP)) {
+            ipLocation = {
+                country: 'IPv6 网络',
+                regionName: '',
+                city: '',
+                lat: 0,
+                lon: 0,
+                query: currentIP,
+                isIPv6: true
+            };
+            setCache(ipLocation);
+            showWelcome();
+            return;
+        }
+
+        // IPv4：查询归属地
+        // 主 API：ip-api.com（注意：在中国大陆可能被墙）
+        // 备选：使用 https://ipwho.is（较稳定）
+        try {
+            const geoResponse = await fetch(`https://ip-api.com/json/${currentIP}?lang=zh-CN&fields=status,country,regionName,city,lat,lon,query`);
+            const geoData = await geoResponse.json();
+
+            if (geoData.status === 'success') {
+                ipLocation = geoData;
+                setCache(ipLocation);
+                showWelcome();
+                return;
+            }
+        } catch (e) {
+            console.log('ip-api.com 请求失败，尝试备用 API');
+        }
+
+        // 备用 API：ipwho.is（更稳定，不太容易被墙）
+        try {
+            const backupResponse = await fetch(`https://ipwho.is/${currentIP}?lang=zh`);
+            const backupData = await backupResponse.json();
+
+            if (backupData.success) {
+                ipLocation = {
+                    country: backupData.country,
+                    regionName: backupData.region,
+                    city: backupData.city,
+                    lat: backupData.latitude,
+                    lon: backupData.longitude,
+                    query: currentIP
+                };
+                setCache(ipLocation);
+                showWelcome();
+                return;
+            }
+        } catch (e) {
+            console.log('备用 API 也失败');
+        }
+
+        // 所有 API 都失败，显示"?"
+        ipLocation = {
+            country: '?',
+            regionName: '',
+            city: '',
+            lat: 0,
+            lon: 0,
+            query: currentIP,
+            isError: true
+        };
+        showWelcome();
+
+    } catch (e) {
+        // 连 IP 都获取失败
+        ipLocation = {
+            country: '?',
+            regionName: '',
+            city: '',
+            lat: 0,
+            lon: 0,
+            query: '未知',
+            isError: true
+        };
+        showWelcome();
+    }
 }
 
 // 计算两点之间的距离（公里）
@@ -121,7 +183,6 @@ function showWelcome() {
         return;
     }
 
-    // 博主位置经纬度
     let dist = getDistance(125.323, 43.817, ipLocation.lon, ipLocation.lat);
 
     let country = ipLocation.country;
@@ -131,14 +192,19 @@ function showWelcome() {
     let pos = country;
     let posdesc;
 
-    // 本地预览或错误模式的特殊处理
+    // 特殊情况处理
     if (ipLocation.isLocalPreview) {
         pos = '本地开发环境';
         posdesc = '🔧 正在本地预览中，推送到线上后可看到真实 IP 信息';
         dist = '∞';
-    } else if (ipLocation.isError) {
+    } else if (ipLocation.isIPv6) {
+        pos = 'IPv6 网络';
+        posdesc = '🚀 先进的技术！您正在使用 IPv6 连接';
+        dist = '?';
+        ip = '<br>IPv6: ' + (ip.length > 20 ? ip.substring(0, 20) + '...' : ip);
+    } else if (ipLocation.isError || country === '?') {
         pos = '神秘的地方';
-        posdesc = '欢迎来到这个小站！';
+        posdesc = '🤔 无法确定您的位置，欢迎来到这个小站！';
         dist = '?';
     } else {
         // 正常模式：根据国家、省份、城市信息自定义欢迎语
@@ -208,9 +274,9 @@ function showWelcome() {
                         break;
                     case "江苏":
                     case "江苏省":
-                        if (city.includes("南京")) {
+                        if (city && city.includes("南京")) {
                             posdesc = "这是我挺想去的城市啦";
-                        } else if (city.includes("苏州")) {
+                        } else if (city && city.includes("苏州")) {
                             posdesc = "上有天堂，下有苏杭";
                         } else {
                             posdesc = "散装是必须要散装的";
@@ -222,15 +288,15 @@ function showWelcome() {
                         break;
                     case "河南":
                     case "河南省":
-                        if (city.includes("郑州")) {
+                        if (city && city.includes("郑州")) {
                             posdesc = "豫州之域，天地之中";
-                        } else if (city.includes("南阳")) {
+                        } else if (city && city.includes("南阳")) {
                             posdesc = "臣本布衣，躬耕于南阳此南阳非彼南阳！";
-                        } else if (city.includes("驻马店")) {
+                        } else if (city && city.includes("驻马店")) {
                             posdesc = "峰峰有奇石，石石挟仙气嵖岈山的花很美哦！";
-                        } else if (city.includes("开封")) {
+                        } else if (city && city.includes("开封")) {
                             posdesc = "刚正不阿包青天";
-                        } else if (city.includes("洛阳")) {
+                        } else if (city && city.includes("洛阳")) {
                             posdesc = "洛阳牡丹甲天下";
                         } else {
                             posdesc = "可否带我品尝河南烩面啦？";
@@ -254,7 +320,7 @@ function showWelcome() {
                         break;
                     case "湖北":
                     case "湖北省":
-                        if (city.includes("黄冈")) {
+                        if (city && city.includes("黄冈")) {
                             posdesc = "红安将军县！辈出将才！";
                         } else {
                             posdesc = "来碗热干面~";
@@ -266,11 +332,11 @@ function showWelcome() {
                         break;
                     case "广东":
                     case "广东省":
-                        if (city.includes("广州")) {
+                        if (city && city.includes("广州")) {
                             posdesc = "看小蛮腰，喝早茶了嘛~";
-                        } else if (city.includes("深圳")) {
+                        } else if (city && city.includes("深圳")) {
                             posdesc = "今天你逛商场了嘛~";
-                        } else if (city.includes("阳江")) {
+                        } else if (city && city.includes("阳江")) {
                             posdesc = "阳春合水！博主家乡~ 欢迎来玩~";
                         } else {
                             posdesc = "来两斤福建人~";
@@ -358,11 +424,6 @@ function showWelcome() {
         timeChange = "<span>🌙 晚上好，夜生活嗨起来！</span>";
     } else {
         timeChange = "夜深了，早点休息，少熬夜";
-    }
-
-    // IPv6 显示处理
-    if (ip && ip.includes(":")) {
-        ip = "<br>好复杂，咱看不懂~(ipv6)";
     }
 
     try {
